@@ -10,7 +10,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          mapbox: ['mapbox-gl'],
+          react: ['react', 'react-dom'],
+        },
+      },
+    },
   },
   define: {
     'process.env': {},

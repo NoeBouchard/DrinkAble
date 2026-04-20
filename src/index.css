@@ -135,3 +135,21 @@ a {
     font-size: 14px;
   }
 }
+
+/* Hide scrollbars on horizontal filter rows (mobile) while keeping scroll behavior */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Toast slide-down */
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-down {
+  animation: slide-down 0.25s ease-out;
+}

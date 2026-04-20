@@ -45,10 +45,10 @@ export function FilterBar({ filters, onFiltersChange }) {
     filters.brewMethods.length > 0 || filters.openNow || filters.priceRange.length > 0;
 
   return (
-    <div className="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm p-4">
-      <div className="flex flex-wrap items-center gap-3">
+    <div className="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm p-3 sm:p-4">
+      <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto sm:flex-wrap scrollbar-none -mx-3 px-3 sm:mx-0 sm:px-0">
         {/* Brew Method Selector */}
-        <div className="relative">
+        <div className="relative shrink-0">
           <button
             onClick={() => setShowBrewDropdown(!showBrewDropdown)}
             className="text-sm font-medium px-3 py-2 rounded border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
@@ -78,7 +78,7 @@ export function FilterBar({ filters, onFiltersChange }) {
         {/* Open Now Toggle */}
         <button
           onClick={handleOpenNowToggle}
-          className={`text-sm font-medium px-3 py-2 rounded transition-colors ${
+          className={`text-sm font-medium px-3 py-2 rounded transition-colors shrink-0 whitespace-nowrap ${
             filters.openNow
               ? 'bg-green-100 text-green-700 border border-green-300'
               : 'border border-gray-300 hover:border-gray-400 hover:bg-gray-50'
@@ -88,7 +88,7 @@ export function FilterBar({ filters, onFiltersChange }) {
         </button>
 
         {/* Price Range Selector */}
-        <div className="flex gap-1 border border-gray-300 rounded">
+        <div className="flex gap-1 border border-gray-300 rounded shrink-0">
           {PRICE_RANGES.map((price) => (
             <button
               key={price}
@@ -114,7 +114,7 @@ export function FilterBar({ filters, onFiltersChange }) {
                 priceRange: [],
               })
             }
-            className="text-sm text-gray-600 hover:text-gray-900 font-medium ml-auto"
+            className="text-sm text-gray-600 hover:text-gray-900 font-medium shrink-0 whitespace-nowrap ml-auto"
           >
             ✕ Reset
           </button>
