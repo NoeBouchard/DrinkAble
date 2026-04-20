@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useImperativeHandle, forwardRef } from 'react';
 
 const API_URL =
   import.meta.env.PROD
     ? '/api/advisor'
     : 'http://localhost:3001/api/advisor';
 
-export function CoffeeAdvisor({ userLocation, topShops }) {
+export const CoffeeAdvisor = forwardRef(function CoffeeAdvisor({ userLocation, topShops }, ref) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState(null);
@@ -26,7 +26,7 @@ export function CoffeeAdvisor({ userLocation, topShops }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [isOpen, handleClose]);
 
-  const handleAsk = async () => {
+  const handleAsk = useCallback(async () => {
     setIsOpen(true);
     setIsLoading(true);
     setError(null);
@@ -62,7 +62,10 @@ export function CoffeeAdvisor({ userLocation, topShops }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [userLocation, topShops]);
+
+  // Expose handleAsk so parent can trigger it
+  useImperativeHandle(ref, () => ({ ask: handleAsk }), [handleAsk]);
 
   const handleCopy = () => {
     if (!response?.recommendations) return;
@@ -183,6 +186,6 @@ export function CoffeeAdvisor({ userLocation, topShops }) {
       </div>
     </div>
   );
-}
+});
 
 export default CoffeeAdvisor;

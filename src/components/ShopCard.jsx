@@ -10,7 +10,7 @@ import { scoreToPercentage, getScoreColor, getScoreTextColor } from '../utils/sc
  * - isSelected: boolean
  * - onClick: function
  */
-export function ShopCard({ shop, userLat, userLng, isSelected, onClick }) {
+export function ShopCard({ shop, userLat, userLng, isSelected, onClick, onAskAdvisor }) {
   const distance = haversineDistance(userLat, userLng, shop.lat, shop.lng);
   const scorePercent = scoreToPercentage(shop.compositeScore);
   const scoreColor = getScoreColor(scorePercent);
@@ -113,7 +113,13 @@ export function ShopCard({ shop, userLat, userLng, isSelected, onClick }) {
       </div>
 
       {/* Action Button */}
-      <button className="w-full bg-coffee-700 text-white font-medium py-2 rounded hover:bg-coffee-800 transition-colors text-sm">
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onAskAdvisor?.();
+        }}
+        className="w-full bg-coffee-700 text-white font-medium py-2 rounded hover:bg-coffee-800 transition-colors text-sm"
+      >
         Ask Advisor
       </button>
     </div>

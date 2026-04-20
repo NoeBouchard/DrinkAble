@@ -35,3 +35,6 @@ coverage/
 
 # Misc
 *.pem
+
+# Claude Code local state
+.claude/

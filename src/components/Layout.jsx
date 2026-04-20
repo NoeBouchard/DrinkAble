@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Map } from './Map';
 import { ShopList } from './ShopList';
 import { FilterBar } from './FilterBar';
@@ -13,8 +13,13 @@ export function Layout({
   onFiltersChange,
 }) {
   const [showMapOnMobile, setShowMapOnMobile] = useState(false);
+  const advisorRef = useRef(null);
 
   const topShops = shops.slice(0, 10);
+
+  const handleAskAdvisor = () => {
+    advisorRef.current?.ask();
+  };
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen bg-white overflow-hidden">
@@ -67,6 +72,7 @@ export function Layout({
             userLat={userLocation.lat}
             userLng={userLocation.lng}
             isLoading={userLocation.loading}
+            onAskAdvisor={handleAskAdvisor}
           />
         </div>
 
@@ -81,8 +87,8 @@ export function Layout({
         </div>
       </div>
 
-      {/* Coffee Advisor FAB */}
-      <CoffeeAdvisor userLocation={userLocation} topShops={topShops} />
+      {/* Coffee Advisor */}
+      <CoffeeAdvisor ref={advisorRef} userLocation={userLocation} topShops={topShops} />
     </div>
   );
 }
