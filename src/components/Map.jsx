@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { scoreToPercentage } from '../utils/scoring';
 
@@ -35,6 +35,7 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
   const map = useRef(null);
   const popup = useRef(null);
   const userMarker = useRef(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
   const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
   // Initialize map once
@@ -182,12 +183,11 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
         map.current.getCanvas().style.cursor = '';
       });
 
-      // User location marker
-      const el = document.createElement('div');
-      el.className = 'user-location-marker';
-      userMarker.current = new mapboxgl.Marker(el)
-        .setLngLat([userLocation.lng, userLocation.lat])
-        .addTo(map.current);
+      // Mark map as loaded so marker-creation effect can run.
+      // (Marker itself is created in its own effect so it picks up the
+      // real geolocation even when 'load' fires after geolocation resolves,
+      // which is common on mobile.)
+      setMapLoaded(true);
     });
 
     return () => {
@@ -207,28 +207,45 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
     }
   }, [shops]);
 
-  // Update user location marker + re-center map on the real location
-  // once geolocation resolves (map inits with the London fallback).
-  const hasCenteredOnUser = useRef(false);
+  // Create or update the user location marker once the map is loaded.
+  // Kept separate from the 'load' callback so we always read the *current*
+  // userLocation — on mobile, map 'load' can fire after geolocation
+  // resolves, and a closure-captured value would freeze the marker at the
+  // London fallback.
   useEffect(() => {
-    if (userMarker.current) {
+    if (!mapLoaded || !map.current) return;
+    if (!userMarker.current) {
+      const el = document.createElement('div');
+      el.className = 'user-location-marker';
+      userMarker.current = new mapboxgl.Marker(el)
+        .setLngLat([userLocation.lng, userLocation.lat])
+        .addTo(map.current);
+    } else {
       userMarker.current.setLngLat([userLocation.lng, userLocation.lat]);
     }
+  }, [mapLoaded, userLocation.lat, userLocation.lng]);
+
+  // Fly the map to the real user location once geolocation resolves
+  // (map inits centered on the London fallback). Only once per session.
+  const hasCenteredOnUser = useRef(false);
+  useEffect(() => {
     if (
-      map.current &&
-      !userLocation.loading &&
-      !userLocation.error &&
-      !hasCenteredOnUser.current
+      !mapLoaded ||
+      !map.current ||
+      userLocation.loading ||
+      userLocation.error ||
+      hasCenteredOnUser.current
     ) {
-      hasCenteredOnUser.current = true;
-      map.current.flyTo({
-        center: [userLocation.lng, userLocation.lat],
-        zoom: 13,
-        duration: 1200,
-        essential: true,
-      });
+      return;
     }
-  }, [userLocation.lat, userLocation.lng, userLocation.loading, userLocation.error]);
+    hasCenteredOnUser.current = true;
+    map.current.flyTo({
+      center: [userLocation.lng, userLocation.lat],
+      zoom: 13,
+      duration: 1200,
+      essential: true,
+    });
+  }, [mapLoaded, userLocation.lat, userLocation.lng, userLocation.loading, userLocation.error]);
 
   // Fly to selected shop + highlight ring
   const flyToShop = useCallback((shopId) => {
