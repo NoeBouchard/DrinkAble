@@ -3,6 +3,7 @@ import cors from 'cors';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { runAdvisor } from './advisor-handler.js';
+import { runShopRating } from './rating-handler.js';
 
 // Load .env.local manually (dotenv has issues with some ESM setups)
 try {
@@ -37,6 +38,18 @@ app.post('/api/advisor', async (req, res) => {
     console.log(
       `[advisor] Returned ${result.body.recommendations?.length || 0} recommendations`
     );
+  }
+  res.status(result.status).json(result.body);
+});
+
+app.post('/api/shop-rating', async (req, res) => {
+  const shopName = req.body?.shop?.name || '?';
+  console.log(`[shop-rating] Request for "${shopName}"`);
+  const result = await runShopRating(req.body);
+  if (result.status >= 400) {
+    console.warn(`[shop-rating] ${result.status}:`, result.body.error);
+  } else {
+    console.log(`[shop-rating] Rated "${shopName}" => ${result.body.rating}`);
   }
   res.status(result.status).json(result.body);
 });

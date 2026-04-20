@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { ShopCard } from './ShopCard';
 
-export function ShopList({ shops, selectedShop, onSelectShop, userLat, userLng, isLoading, onAskAdvisor }) {
+export function ShopList({ shops, selectedShop, onSelectShop, userLat, userLng, isLoading, onShopRating }) {
   const listRef = useRef(null);
 
   // Auto-scroll to selected shop (e.g. when clicking a map marker)
@@ -54,7 +54,7 @@ export function ShopList({ shops, selectedShop, onSelectShop, userLat, userLng, 
             userLng={userLng}
             isSelected={selectedShop === shop.id}
             onClick={() => onSelectShop(shop.id)}
-            onAskAdvisor={onAskAdvisor}
+            onShopRating={onShopRating}
           />
         </div>
       ))}

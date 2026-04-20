@@ -3,6 +3,7 @@ import { Map } from './Map';
 import { ShopList } from './ShopList';
 import { FilterBar } from './FilterBar';
 import { CoffeeAdvisor } from './CoffeeAdvisor';
+import { ShopRatingModal } from './ShopRatingModal';
 
 export function Layout({
   shops,
@@ -15,11 +16,12 @@ export function Layout({
   const [showMapOnMobile, setShowMapOnMobile] = useState(false);
   const [toastDismissed, setToastDismissed] = useState(false);
   const advisorRef = useRef(null);
+  const ratingRef = useRef(null);
 
   const topShops = shops.slice(0, 10);
 
-  const handleAskAdvisor = () => {
-    advisorRef.current?.ask();
+  const handleShopRating = (shop) => {
+    ratingRef.current?.rate(shop);
   };
 
   // Auto-dismiss the geolocation fallback toast after 6s
@@ -99,7 +101,7 @@ export function Layout({
             userLat={userLocation.lat}
             userLng={userLocation.lng}
             isLoading={userLocation.loading}
-            onAskAdvisor={handleAskAdvisor}
+            onShopRating={handleShopRating}
           />
         </div>
 
@@ -112,8 +114,11 @@ export function Layout({
         </div>
       </div>
 
-      {/* Coffee Advisor */}
+      {/* Coffee Advisor — FAB that recommends 3 shops overall */}
       <CoffeeAdvisor ref={advisorRef} userLocation={userLocation} topShops={topShops} />
+
+      {/* Shop Rating — real-time single-shop review triggered by card buttons */}
+      <ShopRatingModal ref={ratingRef} userLocation={userLocation} />
     </div>
   );
 }
