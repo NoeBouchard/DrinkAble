@@ -207,12 +207,28 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
     }
   }, [shops]);
 
-  // Update user location marker
+  // Update user location marker + re-center map on the real location
+  // once geolocation resolves (map inits with the London fallback).
+  const hasCenteredOnUser = useRef(false);
   useEffect(() => {
     if (userMarker.current) {
       userMarker.current.setLngLat([userLocation.lng, userLocation.lat]);
     }
-  }, [userLocation.lat, userLocation.lng]);
+    if (
+      map.current &&
+      !userLocation.loading &&
+      !userLocation.error &&
+      !hasCenteredOnUser.current
+    ) {
+      hasCenteredOnUser.current = true;
+      map.current.flyTo({
+        center: [userLocation.lng, userLocation.lat],
+        zoom: 13,
+        duration: 1200,
+        essential: true,
+      });
+    }
+  }, [userLocation.lat, userLocation.lng, userLocation.loading, userLocation.error]);
 
   // Fly to selected shop + highlight ring
   const flyToShop = useCallback((shopId) => {
