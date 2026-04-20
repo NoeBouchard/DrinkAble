@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes bounce-delay {
+  0%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-bounce {
+  animation: bounce-delay 1.4s infinite;
+}
+
+/* Line Clamping */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Map Container Styles */
+.mapboxgl-canvas {
+  outline: none;
+}
+
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl {
+  display: none;
+}
+
+/* Smooth Transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+button,
+a {
+  @apply active:scale-95;
+}
+
+/* Mobile Touch Optimization */
+@media (max-width: 640px) {
+  button,
+  [role='button'] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Responsive Text */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
