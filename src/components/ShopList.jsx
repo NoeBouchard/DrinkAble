@@ -1,16 +1,18 @@
+import { useEffect, useRef } from 'react';
 import { ShopCard } from './ShopCard';
 
-/**
- * Scrollable ranked list of coffee shops
- *
- * Props:
- * - shops: array of ranked shop objects
- * - selectedShop: string (shop id) or null
- * - onSelectShop: function(shopId)
- * - userLat, userLng: user coordinates
- * - isLoading: boolean
- */
 export function ShopList({ shops, selectedShop, onSelectShop, userLat, userLng, isLoading }) {
+  const listRef = useRef(null);
+
+  // Auto-scroll to selected shop (e.g. when clicking a map marker)
+  useEffect(() => {
+    if (!selectedShop || !listRef.current) return;
+    const el = listRef.current.querySelector(`[data-shop-id="${selectedShop}"]`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [selectedShop]);
+
   if (isLoading) {
     return (
       <div className="overflow-y-auto h-full p-4 space-y-4 bg-gray-50">
@@ -34,7 +36,7 @@ export function ShopList({ shops, selectedShop, onSelectShop, userLat, userLng, 
     return (
       <div className="overflow-y-auto h-full p-4 flex items-center justify-center">
         <div className="text-center text-gray-600">
-          <div className="text-3xl mb-2">☕</div>
+          <div className="text-3xl mb-2">&#x2615;</div>
           <p className="font-medium">No shops match your filters</p>
           <p className="text-sm text-gray-500 mt-1">Try adjusting your preferences</p>
         </div>
@@ -43,16 +45,17 @@ export function ShopList({ shops, selectedShop, onSelectShop, userLat, userLng, 
   }
 
   return (
-    <div className="overflow-y-auto h-full p-4 space-y-3 bg-gray-50">
+    <div ref={listRef} className="overflow-y-auto h-full p-4 space-y-3 bg-gray-50">
       {shops.map((shop) => (
-        <ShopCard
-          key={shop.id}
-          shop={shop}
-          userLat={userLat}
-          userLng={userLng}
-          isSelected={selectedShop === shop.id}
-          onClick={() => onSelectShop(shop.id)}
-        />
+        <div key={shop.id} data-shop-id={shop.id}>
+          <ShopCard
+            shop={shop}
+            userLat={userLat}
+            userLng={userLng}
+            isSelected={selectedShop === shop.id}
+            onClick={() => onSelectShop(shop.id)}
+          />
+        </div>
       ))}
     </div>
   );

@@ -1,3 +1,5 @@
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -72,9 +74,21 @@ body {
   outline: none;
 }
 
-.mapboxgl-ctrl-logo,
-.mapboxgl-ctrl {
-  display: none;
+/* User location blue dot */
+.user-location-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3b82f6;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Mapbox popup styling */
+.mapboxgl-popup-content {
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Smooth Transitions */
