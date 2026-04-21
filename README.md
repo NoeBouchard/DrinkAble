@@ -111,7 +111,7 @@ This project is built across 4 development sessions:
 ## Project Structure
 
 ```
-brewscout/
+drinkable/
 ├── TECHNICAL_SPEC.md           # Architecture & detailed spec
 ├── CLAUDE_CODE_GUIDE.md        # Exact prompts for each session
 ├── package.json

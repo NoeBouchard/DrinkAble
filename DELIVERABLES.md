@@ -1,7 +1,7 @@
 # DrinkAble MVP - Complete Deliverables Manifest
 
 ## Project Location
-`/sessions/gifted-inspiring-planck/mnt/Project brainstorming/brewscout/`
+`/Users/noebouchard/Documents/Claude/Projects/Project brainstorming/drinkable/`
 
 ## All Files Created (27 Total)
 
@@ -318,7 +318,7 @@ Sessions 2-4: ✅ READY FOR DEVELOPMENT
 ## File Structure
 
 ```
-brewscout/
+drinkable/
 ├── Documentation
 │   ├── TECHNICAL_SPEC.md        # Full spec
 │   ├── CLAUDE_CODE_GUIDE.md     # Session prompts

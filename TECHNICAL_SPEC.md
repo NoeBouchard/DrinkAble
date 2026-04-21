@@ -748,7 +748,7 @@ vercel deploy --prod             # Force re-deploy if needed
 ## 15. File Structure Summary
 
 ```
-brewscout/
+drinkable/
 ├── TECHNICAL_SPEC.md
 ├── CLAUDE_CODE_GUIDE.md
 ├── package.json
