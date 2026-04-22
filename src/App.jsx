@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './components/Layout';
 import { useGeolocation } from './hooks/useGeolocation';
 import { useShopRanking } from './hooks/useShopRanking';
@@ -22,14 +23,17 @@ function App() {
   );
 
   return (
-    <Layout
-      shops={rankedShops}
-      userLocation={userLocation}
-      selectedShop={selectedShop}
-      onSelectShop={setSelectedShop}
-      filters={filters}
-      onFiltersChange={setFilters}
-    />
+    <>
+      <Layout
+        shops={rankedShops}
+        userLocation={userLocation}
+        selectedShop={selectedShop}
+        onSelectShop={setSelectedShop}
+        filters={filters}
+        onFiltersChange={setFilters}
+      />
+      <Analytics />
+    </>
   );
 }
 
