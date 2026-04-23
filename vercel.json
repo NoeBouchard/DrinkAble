@@ -7,6 +7,10 @@
     "api/advisor.js": {
       "maxDuration": 30,
       "memory": 512
+    },
+    "api/shop-rating.js": {
+      "maxDuration": 30,
+      "memory": 512
     }
   },
   "headers": [
