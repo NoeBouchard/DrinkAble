@@ -1,34 +1,26 @@
 {
-  "name": "DrinkAble - Find your next perfect cup",
-  "short_name": "DrinkAble",
-  "description": "Specialty coffee shop discovery web app for London",
+  "name": "Drinkable",
+  "short_name": "Drinkable",
+  "description": "Personalized, conversational coffee recommendation from a knowledgeable expert.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#1f2937",
-  "background_color": "#ffffff",
+  "theme_color": "#86a192",
+  "background_color": "#f6f4ef",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231f2937' width='192' height='192'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='96' font-family='system-ui' fill='%23f5f1ed'>☕</text></svg>",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%23f6f4ef' width='192' height='192' rx='40'/%3E%3Cg transform='translate(48 48) scale(1.7)'%3E%3Cpath d='M14 10 L42 10 L38 46 Q38 50 34 50 L22 50 Q18 50 18 46 Z' stroke='%232d3a33' stroke-width='2.5' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M16.5 28 L39.5 28 L37.6 46 Q37.6 49.2 34.4 49.2 L21.6 49.2 Q18.4 49.2 18.4 46 Z' fill='%2386a192'/%3E%3C/g%3E%3C/svg%3E",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%231f2937' width='512' height='512'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='256' font-family='system-ui' fill='%23f5f1ed'>☕</text></svg>",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%2386a192' width='512' height='512' rx='110'/%3E%3Cg transform='translate(128 128) scale(4.6)'%3E%3Cpath d='M14 10 L42 10 L38 46 Q38 50 34 50 L22 50 Q18 50 18 46 Z' stroke='%23ffffff' stroke-width='2.5' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M16.5 28 L39.5 28 L37.6 46 Q37.6 49.2 34.4 49.2 L21.6 49.2 Q18.4 49.2 18.4 46 Z' fill='%23ffffff' fill-opacity='0.85'/%3E%3C/g%3E%3C/svg%3E",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["food", "lifestyle"],
-  "screenshots": [
-    {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23fff' width='540' height='720'/><rect fill='%231f2937' width='540' height='60'/><text x='20' y='40' font-size='28' font-family='system-ui' fill='%23fff' font-weight='bold'>DrinkAble</text></svg>",
-      "sizes": "540x720",
-      "type": "image/svg+xml",
-      "form_factor": "narrow"
-    }
-  ]
+  "categories": ["food", "lifestyle"]
 }

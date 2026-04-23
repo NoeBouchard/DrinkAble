@@ -4,37 +4,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global Styles */
+/* ─────────────────────────────────────────────────────────────
+   Drinkable palette — HEX fallback, OKLCH for capable browsers.
+   Tailwind classes (bg-sage, text-ink, etc.) use the HEX values.
+   Inline styles or CSS that need pixel-accurate brand tones
+   should consume var(--sage), var(--ink), etc.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --bg: #f6f4ef;
+  --sage: #86a192;
+  --sage-deep: #4f6b5c;
+  --sage-light: #d6e0d9;
+  --ink: #2d3a33;
+  --ink-soft: #5d6b64;
+}
+
+@supports (color: oklch(0.5 0.05 155)) {
+  :root {
+    --bg: oklch(0.96 0.01 90);
+    --sage: oklch(0.72 0.06 155);
+    --sage-deep: oklch(0.52 0.07 155);
+    --sage-light: oklch(0.88 0.04 155);
+    --ink: oklch(0.28 0.03 155);
+    --ink-soft: oklch(0.45 0.02 155);
+  }
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
   height: 100vh;
   overflow: hidden;
+  background: var(--bg);
 }
 
-/* Scrollbar Styling */
+/* Scrollbar Styling — sage tint */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d6e0d9;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #86a192;
+}
+
+/* Focus rings — sage */
+*:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Animations */
@@ -61,6 +97,15 @@ body {
   animation: bounce-delay 1.4s infinite;
 }
 
+/* Pulsing logo — used during the first-recommendation skeleton */
+@keyframes logo-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.animate-logo-pulse {
+  animation: logo-pulse 1.6s ease-in-out infinite;
+}
+
 /* Line Clamping */
 .line-clamp-2 {
   overflow: hidden;
@@ -68,37 +113,40 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
 
 /* Map Container Styles */
 .mapboxgl-canvas {
   outline: none;
 }
 
-/* User location blue dot */
+/* User location dot — now sage */
 .user-location-marker {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #3b82f6;
+  background: var(--sage);
   border: 3px solid #fff;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 0 4px rgba(134, 161, 146, 0.3);
 }
 
 /* Mapbox popup styling */
 .mapboxgl-popup-content {
-  border-radius: 8px;
-  padding: 8px 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Smooth Transitions */
-* {
-  @apply transition-colors duration-200;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 14px rgba(45, 58, 51, 0.15);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
 }
 
 button,
 a {
-  @apply active:scale-95;
+  @apply active:scale-[0.98];
 }
 
 /* Mobile Touch Optimization */
@@ -121,12 +169,21 @@ a {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .animate-fade-in {
   animation: fade-in 0.2s ease-out;
 }
 
 .animate-slide-up {
   animation: slide-up 0.3s ease-out;
+}
+
+.animate-screen-in {
+  animation: screen-in 0.35s ease-out;
 }
 
 /* Responsive Text */
@@ -136,7 +193,7 @@ a {
   }
 }
 
-/* Hide scrollbars on horizontal filter rows (mobile) while keeping scroll behavior */
+/* Hide scrollbars on horizontal filter rows (mobile) */
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;

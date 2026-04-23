@@ -13,13 +13,6 @@ const BREW_METHODS = [
 
 const PRICE_RANGES = ['$', '$$', '$$$'];
 
-/**
- * Sticky filter bar with brew method, open now, and price range controls
- *
- * Props:
- * - filters: { brewMethods: [], openNow: boolean, priceRange: [] }
- * - onFiltersChange: function(newFilters)
- */
 export function FilterBar({ filters, onFiltersChange }) {
   const [showBrewDropdown, setShowBrewDropdown] = useState(false);
 
@@ -45,28 +38,28 @@ export function FilterBar({ filters, onFiltersChange }) {
     filters.brewMethods.length > 0 || filters.openNow || filters.priceRange.length > 0;
 
   return (
-    <div className="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm p-3 sm:p-4">
+    <div className="sticky top-0 z-20 bg-white border-b border-sageLight p-3 sm:p-4">
       <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto sm:flex-wrap scrollbar-none -mx-3 px-3 sm:mx-0 sm:px-0">
-        {/* Brew Method Selector */}
+        {/* Brew Method */}
         <div className="relative shrink-0">
           <button
             onClick={() => setShowBrewDropdown(!showBrewDropdown)}
-            className="text-sm font-medium px-3 py-2 rounded border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+            className="text-sm font-medium px-3 py-2 rounded-full border border-sageLight bg-bg hover:border-sage hover:bg-sageLight/50 text-ink transition-colors"
           >
-            ☕ Brew Methods {filters.brewMethods.length > 0 && `(${filters.brewMethods.length})`}
+            ☕ Brew {filters.brewMethods.length > 0 && `(${filters.brewMethods.length})`}
           </button>
           {showBrewDropdown && (
-            <div className="absolute top-full left-0 mt-1 bg-white border border-gray-300 rounded shadow-lg p-2 z-30 min-w-56">
+            <div className="absolute top-full left-0 mt-1 bg-white border border-sageLight rounded-xl shadow-lg p-2 z-30 min-w-56">
               {BREW_METHODS.map((method) => (
                 <label
                   key={method}
-                  className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded cursor-pointer text-sm"
+                  className="flex items-center gap-2 p-2 hover:bg-sageLight/40 rounded-lg cursor-pointer text-sm text-ink"
                 >
                   <input
                     type="checkbox"
                     checked={filters.brewMethods.includes(method)}
                     onChange={() => handleBrewMethodToggle(method)}
-                    className="w-4 h-4"
+                    className="w-4 h-4 accent-sage"
                   />
                   <span className="capitalize">{method}</span>
                 </label>
@@ -75,28 +68,28 @@ export function FilterBar({ filters, onFiltersChange }) {
           )}
         </div>
 
-        {/* Open Now Toggle */}
+        {/* Open Now */}
         <button
           onClick={handleOpenNowToggle}
-          className={`text-sm font-medium px-3 py-2 rounded transition-colors shrink-0 whitespace-nowrap ${
+          className={`text-sm font-medium px-3 py-2 rounded-full transition-colors shrink-0 whitespace-nowrap border ${
             filters.openNow
-              ? 'bg-green-100 text-green-700 border border-green-300'
-              : 'border border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+              ? 'bg-sage text-white border-sage'
+              : 'bg-bg border-sageLight hover:border-sage hover:bg-sageLight/50 text-ink'
           }`}
         >
-          🕐 Open Now
+          🕐 Open now
         </button>
 
-        {/* Price Range Selector */}
-        <div className="flex gap-1 border border-gray-300 rounded shrink-0">
+        {/* Price Range */}
+        <div className="flex gap-1 border border-sageLight rounded-full overflow-hidden shrink-0 bg-bg">
           {PRICE_RANGES.map((price) => (
             <button
               key={price}
               onClick={() => handlePriceRangeToggle(price)}
               className={`text-sm font-medium px-3 py-2 transition-colors ${
                 filters.priceRange.includes(price)
-                  ? 'bg-coffee-700 text-white'
-                  : 'hover:bg-gray-100'
+                  ? 'bg-sage text-white'
+                  : 'text-ink hover:bg-sageLight/60'
               }`}
             >
               {price}
@@ -104,7 +97,6 @@ export function FilterBar({ filters, onFiltersChange }) {
           ))}
         </div>
 
-        {/* Reset Button */}
         {hasActiveFilters && (
           <button
             onClick={() =>
@@ -114,9 +106,9 @@ export function FilterBar({ filters, onFiltersChange }) {
                 priceRange: [],
               })
             }
-            className="text-sm text-gray-600 hover:text-gray-900 font-medium shrink-0 whitespace-nowrap ml-auto"
+            className="text-sm text-inkSoft hover:text-ink font-medium shrink-0 whitespace-nowrap ml-auto"
           >
-            ✕ Reset
+            Reset
           </button>
         )}
       </div>

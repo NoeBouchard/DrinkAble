@@ -2,10 +2,11 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { scoreToPercentage } from '../utils/scoring';
 
+// Sage palette tints — dark for top picks, sage-deep for mid, light for low.
 function getMarkerColor(score) {
-  if (score < 60) return '#ef4444';
-  if (score < 80) return '#eab308';
-  return '#22c55e';
+  if (score < 60) return '#d6e0d9';   // sageLight (subtle)
+  if (score < 80) return '#86a192';   // sage (mid)
+  return '#4f6b5c';                    // sageDeep (top)
 }
 
 function shopsToGeoJSON(shops) {
@@ -70,14 +71,14 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
         clusterRadius: 50,
       });
 
-      // Cluster circles
+      // Cluster circles — sage deep
       map.current.addLayer({
         id: 'clusters',
         type: 'circle',
         source: 'shops',
         filter: ['has', 'point_count'],
         paint: {
-          'circle-color': '#4a3a28',
+          'circle-color': '#4f6b5c',
           'circle-radius': ['step', ['get', 'point_count'], 18, 10, 24, 30, 30],
           'circle-stroke-width': 2,
           'circle-stroke-color': '#fff',
@@ -132,7 +133,7 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
           'circle-color': 'transparent',
           'circle-radius': 16,
           'circle-stroke-width': 3,
-          'circle-stroke-color': '#4a3a28',
+          'circle-stroke-color': '#2d3a33',
         },
       });
 
@@ -161,10 +162,10 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
         popup.current
           .setLngLat(coords)
           .setHTML(
-            `<div style="font-family:system-ui;padding:2px 0">` +
-            `<strong style="font-size:14px">${name}</strong><br/>` +
-            `<span style="color:#666;font-size:12px">${neighborhood}</span><br/>` +
-            `<span style="font-size:12px;font-weight:600;color:${getMarkerColor(score)}">Score: ${score}</span>` +
+            `<div style="font-family:Inter,system-ui;padding:2px 0;color:#2d3a33">` +
+            `<strong style="font-size:14px;font-weight:500">${name}</strong><br/>` +
+            `<span style="color:#5d6b64;font-size:12px">${neighborhood}</span><br/>` +
+            `<span style="font-size:12px;font-weight:600;color:#4f6b5c">Match ${score}</span>` +
             `</div>`
           )
           .addTo(map.current);
@@ -283,20 +284,20 @@ export function Map({ shops, userLocation, selectedShop, onSelectShop }) {
 
   if (!token) {
     return (
-      <div className="relative w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="relative w-full h-full bg-bg flex items-center justify-center">
         <div className="text-center max-w-sm">
-          <div className="text-4xl mb-4">&#x1f5fa;&#xfe0f;</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">Map requires a token</h2>
-          <p className="text-gray-600 mb-4">
+          <div className="text-4xl mb-4">🗺️</div>
+          <h2 className="text-2xl font-medium text-ink mb-3">Map requires a token</h2>
+          <p className="text-inkSoft mb-4">
             Add your Mapbox token to{' '}
-            <code className="bg-gray-200 px-2 py-1 rounded text-sm">.env.local</code>
+            <code className="bg-sageLight px-2 py-1 rounded text-sm text-ink">.env.local</code>
           </p>
-          <pre className="bg-gray-800 text-green-400 text-xs p-3 rounded text-left mb-4">
+          <pre className="bg-ink text-sageLight text-xs p-3 rounded text-left mb-4">
             VITE_MAPBOX_TOKEN=pk_your_token
           </pre>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-inkSoft">
             Get a free token at{' '}
-            <a href="https://account.mapbox.com" className="text-blue-600 hover:underline">
+            <a href="https://account.mapbox.com" className="text-sageDeep hover:underline">
               mapbox.com
             </a>
           </p>

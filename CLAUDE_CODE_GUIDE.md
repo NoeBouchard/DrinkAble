@@ -381,6 +381,241 @@ Output all created/modified files completely. Provide a summary of all Session 4
 
 ---
 
+## Session 5: JTBD Reframe, Onboarding & Advisor-Primary UI
+
+**Duration**: 3–4 hours
+**Goal**: Reframe the app so the Coffee Advisor is the front door, not the map. Add an onboarding flow that captures preferences and delivers a first personalised recommendation as the aha moment. Migrate the visual system to the new "Drinkable" brand (sage palette, Inter, Mark01 logo).
+
+### Context you need before starting
+
+The MVP is live at https://drinkable-drab.vercel.app. Real testers opened it and didn't know what it was for. Diagnosis: the Advisor is the product, but the map is the front door — backwards. The rename from "BrewScout" → "Drinkable" already happened at the folder level; this session propagates it through the UI, copy, and brand.
+
+**Core JTBD (locked):** "When I'm in London and I want a great coffee experience, DrinkAble tells me exactly where to go and why, based on what I actually like."
+
+**Locked tagline** (use verbatim on the splash screen and in meta tags): *"Personalized, conversational coffee recommendation from a knowledgeable expert."*
+
+**What is NOT in scope this session:** expanding the shop database past 45 (that's Session 6), adding login/accounts, building the community/bean-marketplace/B2B features (parked).
+
+### Paste this prompt into Claude Code:
+
+```
+Read TECHNICAL_SPEC.md and CLAUDE_CODE_GUIDE.md from this project directory. You are continuing the DrinkAble MVP. Sessions 1–4 shipped and the app is live in production. This session reframes the product around its real Job To Be Done.
+
+CONTEXT — WHY THIS SESSION EXISTS:
+Real testers opened the app and didn't understand what it was for. The map-first layout buries the actual product, which is the Coffee Advisor. Session 5 makes the Advisor the front door, adds an onboarding flow that turns "what is this?" into "oh, it told me exactly where to go" within the first 60 seconds, and migrates the brand from the BrewScout-era visuals to the new Drinkable design system.
+
+Core JTBD (locked — do not re-scope): "When I'm in London and I want a great coffee experience, Drinkable tells me exactly where to go and why, based on what I actually like."
+
+Locked tagline (use verbatim): "Personalized, conversational coffee recommendation from a knowledgeable expert."
+
+YOUR TASK FOR SESSION 5:
+
+1. DESIGN SYSTEM MIGRATION
+   a. Create src/components/Logo.jsx that exports a single <Logo size={n} /> component. Extract the "Mark01" (half-full glass) SVG from ./Design/logos.jsx — the one with the glass outline and sage-filled lower half. Ship it as:
+      - <Logo size={n} />        → mark only
+      - <LogoLockup size={n} />  → mark + "drinkable" wordmark in Inter 500, tracking -1 to -2
+      The wordmark should be all lowercase.
+   b. Update tailwind.config.js to extend the theme with the Drinkable palette. Use HEX fallbacks alongside OKLCH (Tailwind's JIT needs values it can parse — keep the HEX as the Tailwind class value and add CSS vars in index.css for the OKLCH versions):
+      - bg:        #f6f4ef   (warm off-white)
+      - sage:      #86a192   (primary accent — approximation of oklch(0.72 0.06 155))
+      - sageDeep:  #4f6b5c   (hover/pressed — approximation of oklch(0.52 0.07 155))
+      - sageLight: #d6e0d9   (fills/surfaces — approximation of oklch(0.88 0.04 155))
+      - ink:       #2d3a33   (primary text — approximation of oklch(0.28 0.03 155))
+      - inkSoft:   #5d6b64   (secondary text — approximation of oklch(0.45 0.02 155))
+      Expose each as a CSS variable in src/index.css so the exact OKLCH is used on browsers that support it, with the HEX as fallback.
+   c. Add Inter to index.html via Google Fonts (<link rel="preconnect"> + stylesheet with weights 300;400;500;600;700). Set Tailwind's default sans font-family to Inter, system-ui, -apple-system, sans-serif.
+   d. Update index.html <title> to "Drinkable — find your next coffee", <meta name="description"> to the locked tagline, and <meta name="theme-color"> to #86a192 (sage).
+   e. Update public/manifest.json: name "Drinkable", short_name "Drinkable", description = locked tagline, theme_color #86a192, background_color #f6f4ef.
+   f. Do a global sweep of all existing .jsx/.css files and replace any BrewScout-era colors (grays, blues, the old accent) with the new palette via the Tailwind tokens you just added. Do NOT remove existing class structure — just re-map colors.
+   g. Update index.html favicon to a rasterised version of the Mark01 glyph (inline SVG data-URI is fine for now).
+
+2. ONBOARDING FLOW (NEW)
+   Create a full-screen onboarding experience at src/components/onboarding/ that runs the first time a user lands (detected via localStorage key `drinkable_onboarded`). It has 6 screens controlled by a single <OnboardingFlow /> component:
+
+   Screen 1 — Splash
+   - Centered <LogoLockup size={96} />
+   - Headline: "Drinkable"
+   - Sub-headline (the locked tagline, verbatim): "Personalized, conversational coffee recommendation from a knowledgeable expert."
+   - Single CTA: "Get started" (sage button, rounded-full, Inter 500)
+
+   Screen 2 — Q1: What do you usually drink?
+   - Question: "What do you usually drink?"
+   - Multi-select chips (user can pick any number, at least 1 required to proceed):
+     V60 / Filter / Espresso / Flat white / Cortado / Latte / Cappuccino / Matcha / Tea / Other
+   - Selected chips: sage background, white text. Unselected: sageLight background, ink text.
+   - "Continue" button bottom, disabled until ≥1 selected.
+
+   Screen 3 — Q2: What matters most to you?
+   - Question: "What matters most when you pick a coffee shop?"
+   - Multi-select chips (optional — user can skip; if they pick, at least 1):
+     Discovering new independents / Certified specialty-grade / Roaster-owned / Recognized globally (top 100) / Great vibe to work in / Quick in-and-out
+   - "Continue" button. "Skip" link underneath.
+   - NOTE: These are PREFERENCE SIGNALS — they must be structured so the Advisor can weight them. Do NOT include items like "community discussion" or "track shops I've tried" here — those are feature-research signals captured AFTER the first recommendation (screen 6).
+
+   Screen 4 — Location permission
+   - Headline: "Where are you right now?"
+   - Sub: "We'll use your location to find shops nearby. You can change this anytime."
+   - Primary CTA: "Use my location" (triggers navigator.geolocation; on grant, store lat/lng in localStorage `drinkable_location_permission` = 'granted')
+   - Secondary link: "Use central London instead" (falls back to 51.5074, -0.1278; stores `drinkable_location_permission` = 'denied')
+   - If denied, show a small toast on the next screen: "Using central London — grant location anytime from the menu."
+
+   Screen 5 — First recommendation (the AHA moment)
+   - Headline: "Here's where you should go right now."
+   - Immediately call the advisor API with the collected preferences. While loading, show an animated skeleton with the Mark01 logo pulsing gently.
+   - Once the response returns, render the single top pick (first of 3 recommendations) as a big card:
+     - Shop name + neighborhood
+     - 2–3 sentences of reasoning from Claude
+     - Distance from user
+     - Price range + brew methods (as small chips)
+     - Primary CTA: "Open in Google Maps" → https://www.google.com/maps/dir/?api=1&destination={lat},{lng}&destination_place_id={placeId if we have one, else omit} in a new tab
+     - Secondary CTA: "See other suggestions" → scrolls or animates in 2 more cards
+   - Tertiary CTA at the bottom: "Continue to Drinkable" → marks onboarding as complete and drops the user on the Advisor home screen.
+
+   Screen 6 — Optional post-recommendation micro-survey (feature-research)
+   - Show AFTER the user taps "Continue to Drinkable" on screen 5, as a non-blocking modal (they can dismiss).
+   - Headline: "Quick question — help us figure out what to build next."
+   - Sub: "Would any of these be useful to you?" (multi-select, optional)
+     Chat with a community of coffee lovers / Track the shops I've tried / Buy beans from roasters I'll like
+   - Store selections in localStorage `drinkable_feature_interest` as an array.
+   - Primary CTA: "Submit" (logs the selections via console.log for now — this is telemetry we'll read manually from tester devtools).
+   - Secondary link: "Skip".
+   - IMPORTANT: this must NOT promise these features exist. Frame as "help us decide what to build next."
+
+   Persist answers as they're given to localStorage key `drinkable_preferences`:
+     { drinks: string[], priorities: string[], completedAt: ISO8601 }
+   The onboarding is done when `drinkable_onboarded` === 'true'. If a user reloads mid-flow, resume from the last incomplete screen.
+
+3. ADVISOR-PRIMARY HOME SCREEN
+   a. Rebuild src/App.jsx's layout so the default view (post-onboarding) is an "Advisor Home" screen — NOT the map.
+   b. Create src/components/AdvisorHome.jsx:
+      - Top bar: <LogoLockup size={32} /> on the left, a subtle "Browse all shops" link on the right.
+      - Hero question (large, Inter 500): "What are you looking for right now?"
+      - Under the question, 4 quick-prompt chips the user can tap to auto-fill the input:
+        "A quiet place to work nearby"
+        "Best flat white within 10 min walk"
+        "Try somewhere I haven't been"
+        "Open right now, seat for 2"
+      - Single-line text input with a send button, placeholder: "Or type anything — e.g. 'filter coffee, not too busy, outdoor seating'"
+      - Below the input, a "Recent recommendations" section showing the last 3 recommendations (from localStorage `drinkable_recent_recommendations` — array of {query, topPick, timestamp}, cap at 10, newest first).
+   c. Submitting the prompt POSTs to /api/advisor with {query, userLat, userLng, preferences, nearbyShops, timeOfDay}, streams the response, and renders up to 3 recommendation cards. Each card:
+      - Shop name + neighborhood
+      - Claude's reasoning
+      - Distance
+      - Chips for price + brew methods
+      - Primary CTA: "Open in Google Maps" (same URL format as Screen 5)
+      - Secondary CTA: "Show on map" → switches to the Browse view and flies to that shop.
+   d. Preserve the existing CoffeeAdvisor.jsx logic where helpful but treat AdvisorHome as the new primary surface. The old modal-based Advisor is retired.
+
+4. BROWSE VIEW (SECONDARY)
+   a. The existing map + list + FilterBar are preserved as a secondary view at /browse (or a client-side toggle — pick whichever matches the current routing setup; if there's no router, use a view state in App.jsx).
+   b. Accessed only via the "Browse all shops" link in the Advisor Home top bar, or via a rec card's "Show on map" CTA.
+   c. Add a top-left back button: "← Back to Advisor".
+   d. Re-skin map markers, ShopCard, FilterBar with the new palette — no structural changes.
+
+5. ADVISOR API ENHANCEMENT
+   The advisor endpoint must now accept and use user preferences.
+   a. advisor-handler.js (the shared handler used by both api/advisor.js and src/server/advisor-proxy.js):
+      - Accept new request fields: query (string, optional — the user's natural-language prompt), preferences ({drinks: string[], priorities: string[]}).
+      - Update the system prompt to explicitly instruct Claude to weight shops that match the user's stated drink preferences and priorities. Example system-prompt addition: "The user has told us they drink: {drinks}. When they chose priorities, they picked: {priorities}. Weight your recommendations to favour shops that match these preferences — but never recommend a shop that doesn't exist in the provided list."
+      - If `query` is present, pass it through as the core user request; otherwise fall back to the existing "recommend 3 shops near me" behaviour.
+      - Response shape stays backwards compatible: { advice, recommendations: [{shopId, shopName, neighborhood, reasoning}] }. Add one new optional field per recommendation: `googleMapsUrl` (constructed server-side from lat/lng for convenience).
+   b. Verify both api/advisor.js and src/server/advisor-proxy.js pick up the change automatically because they share the handler. If they don't, fix the sharing.
+
+6. LOCALSTORAGE KEYS (the full set this session introduces)
+   - `drinkable_onboarded`: 'true' | undefined
+   - `drinkable_preferences`: JSON {drinks, priorities, completedAt}
+   - `drinkable_feature_interest`: JSON string[]
+   - `drinkable_location_permission`: 'granted' | 'denied'
+   - `drinkable_recent_recommendations`: JSON array of {query, topPick, timestamp}, capped at 10
+   Wrap reads/writes in a small src/utils/storage.js helper with try/catch so private-browsing mode doesn't blow up the app.
+
+7. TELEMETRY (LIGHTWEIGHT)
+   For every meaningful event during onboarding and advisor usage, emit a console.log with a stable tag prefix. This is deliberately crude — we'll read it from tester devtools and upgrade later.
+   Events to emit:
+   - [drinkable:onboarding_started]
+   - [drinkable:onboarding_q1_submitted] (payload: drinks)
+   - [drinkable:onboarding_q2_submitted] (payload: priorities)
+   - [drinkable:location_granted] / [drinkable:location_denied]
+   - [drinkable:first_recommendation_received] (payload: topPickShopId, latencyMs)
+   - [drinkable:onboarding_completed]
+   - [drinkable:feature_interest_submitted] (payload: selections) — or [drinkable:feature_interest_skipped]
+   - [drinkable:advisor_query_submitted] (payload: query, hasPreferences)
+   - [drinkable:google_maps_opened] (payload: shopId)
+   - [drinkable:browse_view_opened]
+
+8. COPY OVERHAUL
+   Sweep the UI for any copy that still reflects the old positioning (map-first, generic "coffee shop finder"). Rewrite so everything points at the JTBD:
+   - Empty states, loading states, error states
+   - Button labels (prefer verbs: "Ask", "Open in Maps", "Show on map", "Browse all shops")
+   - The old "Ask the Coffee Advisor" button in ShopCard (if still present) becomes "Why this one?" — opens a small explanation powered by the advisor, scoped to that shop.
+   - Error copy stays warm and specific (e.g. "The Advisor is taking a moment. Try again?")
+
+9. VERIFICATION
+   Run locally in two terminals:
+     Terminal 1: npm run server
+     Terminal 2: npm run dev
+   Then:
+   ✓ First load (clear localStorage + hard reload): splash → Q1 → Q2 → location → first reco lands in <6s → micro-survey → Advisor home
+   ✓ Second load: goes straight to Advisor home (onboarding skipped)
+   ✓ Quick-prompt chips pre-fill input and can be submitted
+   ✓ A free-text query returns 3 recommendations, each with a working "Open in Google Maps" link (opens in new tab with correct coordinates)
+   ✓ "Show on map" switches to Browse view and selects the right shop
+   ✓ Browse view renders in the new sage palette, not the old colors
+   ✓ Logo mark and lockup render at all sizes used (32, 48, 96)
+   ✓ No console errors; the telemetry logs fire with the expected tags
+   ✓ Advisor preferences payload is visible in the /api/advisor request body (check Network tab)
+   ✓ The server-side system prompt demonstrably mentions the user's drinks+priorities (log it in dev mode)
+   ✓ Private-browsing mode: app still loads (storage helper doesn't throw)
+   ✓ Run npm run build — succeeds with no warnings from the new code
+   ✓ Lighthouse >80 across metrics on the production build
+
+10. FILES YOU SHOULD END UP TOUCHING
+   NEW:
+   - src/components/Logo.jsx
+   - src/components/AdvisorHome.jsx
+   - src/components/onboarding/OnboardingFlow.jsx
+   - src/components/onboarding/SplashScreen.jsx
+   - src/components/onboarding/Q1Drinks.jsx
+   - src/components/onboarding/Q2Priorities.jsx
+   - src/components/onboarding/LocationPrompt.jsx
+   - src/components/onboarding/FirstRecommendation.jsx
+   - src/components/onboarding/FeatureInterestSurvey.jsx
+   - src/utils/storage.js
+   - src/utils/googleMaps.js (tiny helper that builds the directions URL)
+   - src/utils/telemetry.js (wraps console.log so we can swap later)
+   MODIFIED:
+   - src/App.jsx (new routing between Onboarding / AdvisorHome / Browse)
+   - src/components/Layout.jsx (top-bar with logo + Browse link; no more map-by-default)
+   - src/components/Map.jsx, ShopCard.jsx, ShopList.jsx, FilterBar.jsx (palette re-skin only)
+   - src/components/CoffeeAdvisor.jsx (either retired or reduced to the "Why this one?" micro-modal)
+   - src/index.css (Inter, CSS vars for OKLCH palette)
+   - tailwind.config.js (palette tokens, font family)
+   - index.html (title, meta, favicon, Inter preconnect)
+   - public/manifest.json (rename, colors)
+   - advisor-handler.js (preferences + query + googleMapsUrl)
+   - api/advisor.js, src/server/advisor-proxy.js (verify they pick up handler changes)
+
+QUALITY STANDARDS:
+- The FIRST-RUN experience — splash to "here's where you should go right now" — must feel tight (<60s including network). This is the aha moment; it's the whole point of the session.
+- The Advisor home screen is intentionally minimal. Resist the urge to re-surface the map there.
+- No brand references to "BrewScout" or old colours remain anywhere in the UI or meta.
+- Copy points at the JTBD everywhere. If a user reads only button labels, they should understand what the app does.
+- Accessibility: chips are real buttons (keyboard tabbable), the text input is labeled, focus rings are visible in the sage palette.
+- The palette migration is consistent — no stray old-grey text, no mixed fonts.
+- The post-recommendation micro-survey is dismissible and non-blocking; we never lock the user out for skipping it.
+- Everything persists in localStorage as specified; private-browsing still works.
+
+COMMIT:
+When verification passes, commit with message:
+  "Session 5: JTBD reframe — onboarding, advisor-primary UI, new design system"
+
+Deploy to production with `vercel --prod` when Noe confirms. Do NOT deploy without confirmation.
+
+Output the full diff summary (files created, modified, deleted) when done.
+```
+
+---
+
 ## How to Use This Guide
 
 ### For Each Session:

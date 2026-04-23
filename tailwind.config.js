@@ -6,21 +6,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        coffee: {
-          50: '#faf8f6',
-          100: '#f5f1ed',
-          200: '#e8dfd6',
-          300: '#dac9bb',
-          400: '#c5a87e',
-          500: '#8b6f47',
-          600: '#6b5436',
-          700: '#4a3a28',
-          800: '#2d251e',
-          900: '#1a1410',
-        },
+        // Drinkable palette — HEX values for Tailwind JIT.
+        // Components that need exact OKLCH should consume the matching
+        // CSS variables in src/index.css (e.g. var(--sage)).
+        bg: '#f6f4ef',        // warm off-white
+        sage: '#86a192',      // primary accent
+        sageDeep: '#4f6b5c',  // hover/pressed
+        sageLight: '#d6e0d9', // fills/surfaces
+        ink: '#2d3a33',       // primary text
+        inkSoft: '#5d6b64',   // secondary text
+
+        // Legacy "coffee" tokens are removed; old class names should be
+        // re-mapped to the sage palette during the Session 5 sweep.
       },
       fontFamily: {
-        sans: ['system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      ringColor: {
+        DEFAULT: '#86a192',
       },
     },
   },

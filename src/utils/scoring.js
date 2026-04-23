@@ -34,25 +34,6 @@ export function scoreToPercentage(compositeScore) {
 }
 
 /**
- * Get color for score visualization
- * Red < 60, Yellow 60-79, Green 80+
- */
-export function getScoreColor(percentage) {
-  if (percentage < 60) return 'bg-red-500';
-  if (percentage < 80) return 'bg-yellow-500';
-  return 'bg-green-500';
-}
-
-/**
- * Get text color for score badge
- */
-export function getScoreTextColor(percentage) {
-  if (percentage < 60) return 'text-red-700';
-  if (percentage < 80) return 'text-yellow-700';
-  return 'text-green-700';
-}
-
-/**
  * Check if shop is open at given time
  * Returns true if shop.hours contains opening hours for the day
  */
