@@ -4,6 +4,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { runAdvisor } from './advisor-handler.js';
 import { runShopRating } from './rating-handler.js';
+import trackHandler from '../../api/track.js';
 
 // Load .env.local manually (dotenv has issues with some ESM setups)
 try {
@@ -57,6 +58,10 @@ app.post('/api/shop-rating', async (req, res) => {
   res.status(result.status).json(result.body);
 });
 
+// Telemetry forwarder — same default export as the Vercel function in api/track.js.
+// Deliberately not logged per-event (noisy); see boot-time line below.
+app.post('/api/track', (req, res) => trackHandler(req, res));
+
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', hasApiKey: !!process.env.ANTHROPIC_API_KEY });
 });
@@ -69,4 +74,7 @@ app.listen(PORT, () => {
   } else {
     console.log('  API key loaded');
   }
+  console.log(
+    `  ANALYTICS_WEBHOOK_URL ${process.env.ANALYTICS_WEBHOOK_URL ? 'loaded' : 'not set (track is a no-op)'}`
+  );
 });

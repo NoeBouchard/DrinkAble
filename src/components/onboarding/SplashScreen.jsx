@@ -2,7 +2,7 @@ import { LogoLockup } from '../Logo';
 
 export function SplashScreen({ onContinue }) {
   return (
-    <div className="min-h-screen w-full bg-bg flex flex-col items-center justify-center px-6 py-12 animate-screen-in">
+    <div className="min-h-screen w-full bg-bg flex flex-col items-center justify-center px-6 py-12 overflow-y-auto animate-screen-in">
       <div className="flex flex-col items-center text-center max-w-md">
         <LogoLockup size={96} />
 

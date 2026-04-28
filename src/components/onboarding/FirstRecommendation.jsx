@@ -6,9 +6,7 @@ import { computeCompositeScore } from '../../utils/scoring';
 import { storage } from '../../utils/storage';
 import { track, Events } from '../../utils/telemetry';
 
-const API_URL = import.meta.env.PROD
-  ? '/api/advisor'
-  : 'http://localhost:3001/api/advisor';
+const API_URL = '/api/advisor';
 
 function pickNearbyShops(shops, lat, lng, count = 10) {
   return [...shops]
@@ -160,7 +158,7 @@ export function FirstRecommendation({
   const rest = recs.slice(1);
 
   return (
-    <div className="min-h-screen w-full bg-bg flex flex-col px-6 py-10 sm:py-12 animate-screen-in">
+    <div className="min-h-screen w-full bg-bg flex flex-col px-6 py-10 sm:py-12 overflow-y-auto animate-screen-in">
       <div className="max-w-xl w-full mx-auto flex-1 flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between">

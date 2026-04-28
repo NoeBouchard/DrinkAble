@@ -58,7 +58,7 @@ export function LocationPrompt({ onResolved }) {
   };
 
   return (
-    <div className="min-h-screen w-full bg-bg flex flex-col px-6 py-10 sm:py-16 animate-screen-in">
+    <div className="min-h-screen w-full bg-bg flex flex-col px-6 py-10 sm:py-16 overflow-y-auto animate-screen-in">
       <div className="max-w-xl w-full mx-auto flex-1 flex flex-col">
         <p className="text-xs font-medium text-inkSoft uppercase tracking-wider">Step 3 of 3</p>
         <h1 className="mt-3 text-3xl sm:text-4xl font-medium text-ink leading-tight tracking-tight">

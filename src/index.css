@@ -32,7 +32,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -41,9 +41,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Document-level scroll: each screen sets its own min-h-screen and the page
+   scrolls when content overflows the viewport. The Browse view's Layout
+   self-constrains to h-screen + overflow-hidden so the map stays fixed. */
 #root {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   background: var(--bg);
 }
 

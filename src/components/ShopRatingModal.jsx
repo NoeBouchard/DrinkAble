@@ -1,9 +1,6 @@
 import { useState, useEffect, useCallback, useImperativeHandle, forwardRef } from 'react';
 
-const API_URL =
-  import.meta.env.PROD
-    ? '/api/shop-rating'
-    : 'http://localhost:3001/api/shop-rating';
+const API_URL = '/api/shop-rating';
 
 /**
  * Per-shop "Why this one?" modal — Claude's real-time take on a single shop.

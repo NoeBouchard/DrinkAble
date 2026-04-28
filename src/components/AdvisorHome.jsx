@@ -1,14 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { LogoLockup, Logo } from './Logo';
+import { TopNav } from './TopNav';
 import { storage } from '../utils/storage';
 import { track, Events } from '../utils/telemetry';
 import { directionsUrlForShop } from '../utils/googleMaps';
 import { computeCompositeScore } from '../utils/scoring';
 import { haversineDistance, formatDistance } from '../utils/distance';
 
-const API_URL = import.meta.env.PROD
-  ? '/api/advisor'
-  : 'http://localhost:3001/api/advisor';
+const API_URL = '/api/advisor';
 
 const QUICK_PROMPTS = [
   'A quiet place to work nearby',
@@ -182,15 +181,14 @@ export function AdvisorHome({ shops, userLocation, onOpenBrowse }) {
     <div className="min-h-screen w-full bg-bg flex flex-col overflow-y-auto">
       {/* Top bar */}
       <header className="sticky top-0 z-20 bg-bg/90 backdrop-blur-sm border-b border-sageLight/60">
-        <div className="max-w-3xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-3">
           <LogoLockup size={32} />
-          <button
-            type="button"
-            onClick={() => onOpenBrowse(null)}
-            className="text-sm text-inkSoft hover:text-ink underline underline-offset-2"
-          >
-            Browse all shops
-          </button>
+          <TopNav
+            active="home"
+            onNavigate={(target) => {
+              if (target === 'map') onOpenBrowse(null);
+            }}
+          />
         </div>
       </header>
 

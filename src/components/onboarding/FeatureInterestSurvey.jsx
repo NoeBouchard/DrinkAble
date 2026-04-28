@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { storage } from '../../utils/storage';
 import { track, Events } from '../../utils/telemetry';
+import { getSessionId } from '../../utils/session';
 
 const FEATURE_OPTIONS = [
   'Chat with a community of coffee lovers',
@@ -23,12 +24,31 @@ export function FeatureInterestSurvey({ onClose }) {
 
   const handleSubmit = () => {
     const selections = Array.from(selected);
+    const trimmedEmail = email.trim();
     storage.setFeatureInterest(selections);
-    storage.setTesterEmail(email.trim());
+    storage.setTesterEmail(trimmedEmail);
     track(Events.FEATURE_INTEREST_SUBMITTED, {
       selections,
-      hasEmail: Boolean(email.trim()),
+      hasEmail: Boolean(trimmedEmail),
     });
+    if (trimmedEmail) {
+      try {
+        fetch('/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tab: 'emails',
+            row: [
+              new Date().toISOString(),
+              getSessionId(),
+              trimmedEmail,
+              JSON.stringify(selections),
+            ],
+          }),
+          keepalive: true,
+        }).catch(() => { /* swallow */ });
+      } catch { /* never bubble */ }
+    }
     onClose();
   };
 
