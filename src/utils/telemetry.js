@@ -21,6 +21,8 @@ export const Events = Object.freeze({
   FEATURE_INTEREST_SUBMITTED: 'feature_interest_submitted',
   FEATURE_INTEREST_SKIPPED: 'feature_interest_skipped',
   ADVISOR_QUERY_SUBMITTED: 'advisor_query_submitted',
+  ADVISOR_FILTER_APPLIED: 'advisor_filter_applied',
+  ADVISOR_RECOMMENDATION_DROPPED: 'advisor_recommendation_dropped',
   GOOGLE_MAPS_OPENED: 'google_maps_opened',
   BROWSE_VIEW_OPENED: 'browse_view_opened',
 });

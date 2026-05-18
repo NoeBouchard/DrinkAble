@@ -27,11 +27,109 @@ IMPORTANT: Structure your response as valid JSON with this exact format:
 
 Return ONLY valid JSON, no markdown fences or extra text.`;
 
-function buildSystemPrompt(preferences) {
+// Maps the Q2 priority chip labels (shown to users in
+// src/components/onboarding/Q2Priorities.jsx) to the structured boolean
+// signals stored on each shop in src/data/london-shops.json.
+const PRIORITY_TO_SIGNAL = Object.freeze({
+  'Roaster-owned': 'roastsOwnBeans',
+  'Recognized globally (top 100)': 'worldTop100',
+  'Certified specialty-grade': 'specialtyCertified',
+});
+
+/**
+ * Map free-text priorities → structured signal keys. Anything that doesn't
+ * correspond to a structured field (e.g. "Discovering new independents",
+ * "Great vibe to work in", "Quick in-and-out") is silently dropped — those
+ * still flow to Claude via the prompt's USER PREFERENCES block.
+ */
+function priorityChipsToSignals(priorities) {
+  return priorities
+    .map((p) => PRIORITY_TO_SIGNAL[p])
+    .filter(Boolean);
+}
+
+/**
+ * Prefilter the candidate set by the user's structured Q2 priorities BEFORE
+ * sending to Claude. Three-tier fallback so the user always gets at least 3
+ * candidates if possible:
+ *
+ *   1. Strict — shop must match ALL requested signals.
+ *   2. Relaxed — shop must match AT LEAST ONE requested signal.
+ *   3. Unfiltered — fall back to the original nearbyShops; flag relaxed=true
+ *      so the UI can surface "no perfect matches, here are the closest".
+ *
+ * Always returns up to 10 candidates. filterInfo is returned alongside for
+ * telemetry + system-prompt customisation + UI surfacing.
+ */
+function selectCandidates(nearbyShops, preferences) {
+  const priorities = preferences?.priorities?.filter(Boolean) || [];
+  const requestedSignals = priorityChipsToSignals(priorities);
+
+  if (requestedSignals.length === 0) {
+    const candidates = nearbyShops.slice(0, 10);
+    return {
+      candidates,
+      filterInfo: {
+        requestedSignals: [],
+        strictMatchCount: nearbyShops.length,
+        returnedCount: candidates.length,
+        relaxed: false,
+      },
+    };
+  }
+
+  const strict = nearbyShops.filter((shop) =>
+    requestedSignals.every((sig) => shop[sig] === true)
+  );
+
+  if (strict.length >= 3) {
+    const candidates = strict.slice(0, 10);
+    return {
+      candidates,
+      filterInfo: {
+        requestedSignals,
+        strictMatchCount: strict.length,
+        returnedCount: candidates.length,
+        relaxed: false,
+      },
+    };
+  }
+
+  const relaxed = nearbyShops.filter((shop) =>
+    requestedSignals.some((sig) => shop[sig] === true)
+  );
+
+  if (relaxed.length >= 3) {
+    const candidates = relaxed.slice(0, 10);
+    return {
+      candidates,
+      filterInfo: {
+        requestedSignals,
+        strictMatchCount: strict.length,
+        returnedCount: candidates.length,
+        relaxed: true,
+      },
+    };
+  }
+
+  const candidates = nearbyShops.slice(0, 10);
+  return {
+    candidates,
+    filterInfo: {
+      requestedSignals,
+      strictMatchCount: strict.length,
+      returnedCount: candidates.length,
+      relaxed: true,
+    },
+  };
+}
+
+function buildSystemPrompt(preferences, filterInfo) {
   const drinks = preferences?.drinks?.filter(Boolean) || [];
   const priorities = preferences?.priorities?.filter(Boolean) || [];
+  const filtered = filterInfo?.requestedSignals?.length > 0;
 
-  if (drinks.length === 0 && priorities.length === 0) {
+  if (drinks.length === 0 && priorities.length === 0 && !filtered) {
     return BASE_SYSTEM_PROMPT;
   }
 
@@ -44,9 +142,15 @@ function buildSystemPrompt(preferences) {
       ? `When picking a coffee shop they care most about: ${priorities.join('; ')}.`
       : '';
 
+  const filterLine = !filtered
+    ? ''
+    : filterInfo.relaxed
+      ? `Note: the candidate list below could not be strictly pre-filtered to all of the user's structured priorities (${filterInfo.requestedSignals.join(', ')}) within their nearby radius. The list is the closest available matches; acknowledge this gracefully if a recommendation doesn't fully satisfy a priority.`
+      : `All candidate shops below have been pre-filtered to match the user's structured priorities: ${filterInfo.requestedSignals.join(', ')}. Do NOT re-litigate the filter in your reasoning; instead, focus on which shop best fits the user's query, time of day, and free-text priorities.`;
+
   const weighting = `Weight your recommendations to favour shops that match these preferences — but never recommend a shop that doesn't exist in the provided list. If a shop matches a preference, name the matching dimension explicitly in your reasoning (e.g. "their V60 program is the standout — exactly what you said you drink").`;
 
-  return `${BASE_SYSTEM_PROMPT}\n\nUSER PREFERENCES:\n${[drinkLine, priorityLine, weighting]
+  return `${BASE_SYSTEM_PROMPT}\n\nUSER PREFERENCES:\n${[drinkLine, priorityLine, filterLine, weighting]
     .filter(Boolean)
     .join('\n')}`;
 }
@@ -74,12 +178,19 @@ function buildGoogleMapsUrl(shop) {
  * serverless function. Accepts a plain body object and returns
  * `{ status, body }` where body is the JSON to serialize.
  *
- * Body fields:
+ * Body fields (request):
  * - userLat, userLng (required)
- * - nearbyShops (required): array of shop objects
+ * - nearbyShops (required): array of shop objects, pre-ranked by the client
  * - timeOfDay (optional): ISO 8601 timestamp
  * - query (optional): user's natural-language prompt
  * - preferences (optional): { drinks: string[], priorities: string[] }
+ *
+ * Response body:
+ * - advice: string
+ * - recommendations: [{ shopId, shopName, neighborhood, reasoning, googleMapsUrl }]
+ * - filterInfo: { requestedSignals, strictMatchCount, returnedCount, relaxed }
+ *     Surfaced so the client can emit `advisor_filter_applied` telemetry and
+ *     so a future UI line can explain when relaxed=true.
  */
 export async function runAdvisor(body) {
   const { userLat, userLng, timeOfDay, nearbyShops, query, preferences } = body || {};
@@ -108,7 +219,16 @@ export async function runAdvisor(body) {
     const dayName = getDayName(now);
     const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
-    const candidateShops = nearbyShops.slice(0, 10);
+    const { candidates: candidateShops, filterInfo } = selectCandidates(
+      nearbyShops,
+      preferences
+    );
+
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(
+        `[drinkable:advisor_filter_applied] ${JSON.stringify(filterInfo)}`
+      );
+    }
 
     const shopsContext = candidateShops
       .map((shop, i) => {
@@ -135,7 +255,7 @@ Here are the closest specialty coffee shops:
 
 ${shopsContext}`;
 
-    const systemPrompt = buildSystemPrompt(preferences);
+    const systemPrompt = buildSystemPrompt(preferences, filterInfo);
 
     if (process.env.NODE_ENV !== 'production') {
       const drinks = preferences?.drinks?.filter(Boolean) || [];
@@ -190,6 +310,7 @@ ${shopsContext}`;
       body: {
         advice: parsed.advice || responseText,
         recommendations,
+        filterInfo,
       },
     };
   } catch (error) {

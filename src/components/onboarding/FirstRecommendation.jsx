@@ -128,6 +128,13 @@ export function FirstRecommendation({
       const topPickShopId = data.recommendations?.[0]?.shopId;
       track(Events.FIRST_RECOMMENDATION_RECEIVED, { topPickShopId, latencyMs });
 
+      if (data.filterInfo) {
+        track(Events.ADVISOR_FILTER_APPLIED, data.filterInfo);
+      }
+      (data.droppedRecommendations || []).forEach((dropped) => {
+        track(Events.ADVISOR_RECOMMENDATION_DROPPED, dropped);
+      });
+
       if (data.recommendations?.[0]) {
         const top = data.recommendations[0];
         storage.pushRecentRecommendation({
