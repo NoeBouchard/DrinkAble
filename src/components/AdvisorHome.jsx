@@ -294,6 +294,20 @@ export function AdvisorHome({ shops, userLocation, onOpenBrowse }) {
           </section>
         )}
 
+        {/* Empty state — Advisor returned no valid recs (all dropped by
+            shopName validation, or LLM returned nothing). Don't render
+            advice alone with no cards; it would look broken. */}
+        {response && (response.recommendations?.length ?? 0) === 0 && (
+          <section className="mt-8 bg-white border border-sageLight rounded-2xl p-5">
+            <p className="font-medium text-ink mb-1">
+              I don&apos;t have a confident recommendation for that right now.
+            </p>
+            <p className="text-sm text-inkSoft">
+              Try widening your filters or rephrasing — e.g. drop a priority you can flex on, or describe what would make this trip worth it.
+            </p>
+          </section>
+        )}
+
         {/* Recent recommendations */}
         {!response && recents.length > 0 && (
           <section className="mt-12">

@@ -188,6 +188,13 @@ function buildGoogleMapsUrl(shop) {
  * Response body:
  * - advice: string
  * - recommendations: [{ shopId, shopName, neighborhood, reasoning, googleMapsUrl }]
+ *     Only includes shops whose name was validated against the candidate set.
+ *     When the LLM stuffs apology text into shopName (audit 2026-05-18) we
+ *     drop the rec entirely rather than render a card with a garbage shopId.
+ * - droppedRecommendations: [{ reason, droppedName }]
+ *     Recs the LLM returned that we couldn't match to a candidate. Client
+ *     iterates and emits `advisor_recommendation_dropped` telemetry per entry
+ *     so we can monitor JSON-discipline failures in production.
  * - filterInfo: { requestedSignals, strictMatchCount, returnedCount, relaxed }
  *     Surfaced so the client can emit `advisor_filter_applied` telemetry and
  *     so a future UI line can explain when relaxed=true.
@@ -292,24 +299,46 @@ ${shopsContext}`;
       };
     }
 
-    const recommendations = (parsed.recommendations || []).map((rec) => {
-      const match = candidateShops.find(
-        (s) => s.name.toLowerCase() === rec.shopName?.toLowerCase()
-      );
-      return {
-        shopId: match?.id || rec.shopName?.toLowerCase().replace(/\s+/g, '-') || 'unknown',
+    // Validate each rec against the candidate set. When the model deviates
+    // from JSON discipline (audit 2026-05-18 saw it stuff an apology into
+    // shopName when nothing matched), drop the rec rather than render a
+    // card with a garbage shopId. Empty recommendations is preferred over
+    // a broken card with a Show-on-map button that goes nowhere.
+    const recommendations = [];
+    const droppedRecommendations = [];
+
+    for (const rec of parsed.recommendations || []) {
+      const candidateName = rec.shopName?.trim().toLowerCase();
+      const match = candidateName
+        ? candidateShops.find((s) => s.name.trim().toLowerCase() === candidateName)
+        : null;
+
+      if (!match) {
+        const droppedName = (rec.shopName || '').slice(0, 50);
+        droppedRecommendations.push({ reason: 'no_match', droppedName });
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(
+            `[drinkable:advisor_recommendation_dropped] ${JSON.stringify({ reason: 'no_match', droppedName })}`
+          );
+        }
+        continue;
+      }
+
+      recommendations.push({
+        shopId: match.id,
         shopName: rec.shopName,
         neighborhood: rec.neighborhood,
         reasoning: rec.reasoning,
-        googleMapsUrl: match ? buildGoogleMapsUrl(match) : null,
-      };
-    });
+        googleMapsUrl: buildGoogleMapsUrl(match),
+      });
+    }
 
     return {
       status: 200,
       body: {
         advice: parsed.advice || responseText,
         recommendations,
+        droppedRecommendations,
         filterInfo,
       },
     };

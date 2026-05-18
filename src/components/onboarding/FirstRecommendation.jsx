@@ -203,6 +203,28 @@ export function FirstRecommendation({
           </div>
         )}
 
+        {/* Empty state — Advisor returned but no valid recs survived
+            shopName validation. Render an explicit message rather than
+            silently dropping the user into a screen with just the
+            "Continue to Drinkable" link. */}
+        {response && !top && (
+          <div className="mt-10 bg-white border border-sageLight rounded-2xl p-6">
+            <p className="font-medium text-ink mb-2">
+              I don&apos;t have a confident recommendation for that right now.
+            </p>
+            <p className="text-sm text-inkSoft mb-4">
+              The Advisor couldn&apos;t find a perfect match near you. You can still browse and ask again once you&apos;re in.
+            </p>
+            <button
+              type="button"
+              onClick={fetchRec}
+              className="bg-sage hover:bg-sageDeep text-white font-medium px-6 py-2.5 rounded-full transition-colors text-sm"
+            >
+              Try again
+            </button>
+          </div>
+        )}
+
         {/* Top pick */}
         {top && (
           <div className="mt-8">
