@@ -1,258 +1,102 @@
-# DrinkAble
+# Drinkable
 
-**Find your next perfect cup**
+**Personalized, conversational coffee recommendation from a knowledgeable expert.**
 
-A specialty coffee shop discovery web app for London. Discover hidden gems, find specialty roasters near you, and get personalized recommendations from an AI Coffee Advisor.
+A specialty coffee shop discovery web app for London. The Coffee Advisor (Claude-powered) is the front door — type what you're looking for, get three matched recommendations with reasoning, open in Google Maps. Production: https://drinkable-drab.vercel.app.
 
-## Features
+## How it works
 
-- 🗺️ **Interactive Map**: Explore 45+ London specialty coffee shops on Mapbox GL JS
-- 📍 **Smart Ranking**: Shops ranked by composite score (SCA quality + user rating + proximity)
-- 🎯 **Live Filters**: Filter by brew method, open now, price range
-- ✨ **AI Advisor**: Ask Claude for personalized recommendations
-- 📱 **Mobile-First**: Fully responsive design, touch-friendly
-- 🏪 **Detailed Profiles**: SCA scores, brew methods, vibes, hours, amenities
+1. **Onboarding (first visit)** — splash → drinks you usually order → priorities → location → first AI recommendation as the aha moment.
+2. **Advisor home** — single text input ("What are you looking for right now?") + quick-prompt chips. Submitting calls `/api/advisor`, which sends the top-10 nearest shops to Claude and returns 3 ranked picks with reasoning + a Google Maps link.
+3. **Browse view (secondary)** — map + filtered list + filters, reached from the top-nav or a recommendation's "Show on map".
 
-## Tech Stack
+## Tech stack
 
-- **Frontend**: React 18 + Vite + Tailwind CSS
-- **Map**: Mapbox GL JS
-- **AI**: Claude API (Anthropic)
-- **Server**: Express.js + Vercel Serverless
-- **Data**: Static JSON (upgradeable to Supabase)
+- **Frontend:** React 18 + Vite + Tailwind CSS
+- **Map:** Mapbox GL JS (Browse view only)
+- **AI:** Claude (Anthropic) via Vercel serverless function
+- **Telemetry:** fire-and-forget POST to `/api/track` → Apps-Script webhook
+- **Hosting:** Vercel (static frontend + serverless `/api/*`)
+- **Data:** static JSON (`src/data/london-shops.json`, 45 shops)
 
-## Quick Start
-
-### 1. Clone and Install
+## Quick start
 
 ```bash
 git clone <repo-url>
 cd drinkable
 npm install
-```
-
-### 2. Get API Keys
-
-**Mapbox Token:**
-- Go to https://account.mapbox.com
-- Create free account, generate token
-- Copy token
-
-**Anthropic API Key:**
-- Go to https://console.anthropic.com
-- Create account, generate API key
-- Copy key
-
-### 3. Set Environment Variables
-
-```bash
 cp .env.example .env.local
+# edit .env.local with real tokens (see DEPLOYMENT.md for where to get them)
+
+# in two terminals:
+npm run dev        # Vite at http://localhost:5173
+npm run server     # Express advisor proxy at http://localhost:3001
 ```
 
-Edit `.env.local`:
+Required env vars (see `.env.example`):
+- `VITE_MAPBOX_TOKEN` — public Mapbox token for the Browse-view map
+- `ANTHROPIC_API_KEY` — server-side Claude key for `/api/advisor` and `/api/shop-rating`
+- `ANALYTICS_WEBHOOK_URL` *(optional)* — Apps-Script endpoint for `/api/track` forwarding
+
+Deployment details, env-var setup on Vercel, and troubleshooting are in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Composite scoring (Browse-view ranking)
+
+Shops in the Browse view are ranked by:
 
 ```
-VITE_MAPBOX_TOKEN=pk_eyJ1IjoiYnJld3Njb3V0IiwiYSI6ImNrMzV4...
-ANTHROPIC_API_KEY=sk-ant-v0-1234...
+score = 0.40 × (scaScore / 100) + 0.30 × (googleRating / 5) + 0.30 × proximity
+proximity = max(0, 1 − distance_km / 5)
 ```
 
-### 4. Run Development Server
+Implementation: [src/utils/scoring.js](src/utils/scoring.js). The Advisor doesn't use this score directly — it sends the top-10 nearest shops (sorted by composite) as context to Claude.
 
-```bash
-npm run dev
-```
+## API
 
-Opens http://localhost:5173
+### `POST /api/advisor`
 
-### 5. (Optional) Run Coffee Advisor Server
-
-In a separate terminal:
-
-```bash
-npm run server
-```
-
-Starts Express proxy on http://localhost:3001
-
-## Development Sessions
-
-This project is built across 4 development sessions:
-
-### Session 1: Foundation
-- ✅ Vite + React + Tailwind setup
-- ✅ Data loading from JSON
-- ✅ Geolocation hook
-- ✅ Composite scoring algorithm
-- ✅ ShopCard, ShopList, FilterBar components
-- ✅ Ranking and filtering working
-
-### Session 2: Map Integration
-- Mapbox GL JS integration
-- Marker clustering
-- Real-time filter sync
-- Mobile responsive toggle
-
-### Session 3: AI Advisor
-- Express proxy server
-- Claude API integration
-- Chat-like UI
-- Streaming recommendations
-
-### Session 4: Polish & Deploy
-- Mobile UX finalization
-- Loading skeletons
-- Error states
-- PWA manifest
-- Service worker
-- Vercel deployment
-
-**For detailed prompts, see `CLAUDE_CODE_GUIDE.md`**
-
-## Project Structure
-
-```
-drinkable/
-├── TECHNICAL_SPEC.md           # Architecture & detailed spec
-├── CLAUDE_CODE_GUIDE.md        # Exact prompts for each session
-├── package.json
-├── vite.config.js
-├── index.html
-├── tailwind.config.js
-├── postcss.config.js
-├── .env.example
-├── src/
-│   ├── main.jsx
-│   ├── App.jsx
-│   ├── index.css
-│   ├── data/
-│   │   └── london-shops.json   # 45 specialty shops
-│   ├── components/
-│   │   ├── Map.jsx
-│   │   ├── ShopCard.jsx
-│   │   ├── ShopList.jsx
-│   │   ├── FilterBar.jsx
-│   │   ├── CoffeeAdvisor.jsx
-│   │   └── Layout.jsx
-│   ├── hooks/
-│   │   ├── useGeolocation.js
-│   │   └── useShopRanking.js
-│   ├── utils/
-│   │   ├── scoring.js
-│   │   └── distance.js
-│   └── server/
-│       └── advisor-proxy.js
-└── public/
-    └── manifest.json
-```
-
-## Composite Scoring Algorithm
-
-Shops are ranked by a composite score combining:
-
-- **40%** SCA Score (specialty quality, 0-100)
-- **30%** Google Rating (user satisfaction, 1-5)
-- **30%** Proximity (distance from user, 0-5km radius)
-
-Formula:
-```
-compositeScore = (0.40 × SCA/100) + (0.30 × Rating/5) + (0.30 × proximity)
-```
-
-## API Endpoints
-
-### Coffee Advisor
-
-```
-POST /api/advisor
-
-Request:
+Request body:
+```json
 {
+  "query": "a quiet place to read this afternoon",
   "userLat": 51.5074,
   "userLng": -0.1278,
-  "timeOfDay": "2024-03-14T14:30:00Z",
-  "nearbyShops": [...]
+  "timeOfDay": "2026-05-18T14:30:00Z",
+  "nearbyShops": [ /* up to 10 shop objects */ ],
+  "preferences": { "drinks": ["Filter"], "priorities": ["Roaster-owned"] }
 }
+```
 
 Response:
+```json
 {
-  "advice": "You are in a great location...",
+  "advice": "Two-to-three sentence opener…",
   "recommendations": [
-    {
-      "shopId": "prufrock-coffee",
-      "shopName": "Prufrock Coffee",
-      "neighborhood": "Clerkenwell",
-      "reasoning": "Just 0.4km away..."
-    },
-    ...
+    { "shopId": "prufrock-coffee", "shopName": "Prufrock Coffee",
+      "neighborhood": "Clerkenwell", "reasoning": "…",
+      "googleMapsUrl": "https://www.google.com/maps/dir/?api=1&…" }
   ]
 }
 ```
 
-## Filtering
+### `POST /api/shop-rating`
 
-**Brew Methods**: espresso, v60, aeropress, chemex, siphon, batch-brew, cold-brew, pour-over
+Per-shop "Why this one?" Claude review — see [src/server/rating-handler.js](src/server/rating-handler.js).
 
-**Price Ranges**: $ (£2-4), $$ (£4-6), $$$ (£6+)
+### `POST /api/track`
 
-**Open Now**: Toggle to show only currently open shops
+Fire-and-forget telemetry forwarder; client uses [src/utils/telemetry.js](src/utils/telemetry.js). See [api/track.js](api/track.js).
 
-## London Coffee Landmarks Included
+## Filtering (Browse view)
 
-- Prufrock Coffee (Clerkenwell)
-- Monmouth Coffee (Borough Market, Covent Garden)
-- Ozone Coffee Roasters (Shoreditch)
-- Caravan Coffee (King's Cross, Bankside)
-- Workshop Coffee (Clerkenwell, Marylebone)
-- Climpson & Sons (Hackney)
-- Nude Espresso (Brick Lane, Soho)
-- Assembly Coffee (Brixton)
-- And 37 more...
+- **Brew methods:** `espresso`, `v60`, `aeropress`, `chemex`, `siphon`, `batch-brew`, `cold-brew`, `pour-over`
+- **Price:** `$` / `$$` / `$$$`
+- **Open now:** computed from each shop's `hours.{day}` against current time
 
-## Deployment
+## Project state and roadmap
 
-### Deploy to Vercel
-
-```bash
-npm install -g vercel
-vercel login
-vercel --prod
-```
-
-Set environment variables in Vercel dashboard:
-- VITE_MAPBOX_TOKEN
-- ANTHROPIC_API_KEY
-
-### Build Locally
-
-```bash
-npm run build
-npm run preview
-```
-
-## Future Enhancements
-
-- [ ] User authentication & saved favorites
-- [ ] Supabase integration for user reviews
-- [ ] Real-time hours from Google Places API
-- [ ] Photo gallery per shop
-- [ ] Event calendar (cupping, tasting events)
-- [ ] Export route planner (visit N shops in one afternoon)
-- [ ] Expand to other cities (Paris, Berlin, Tokyo, etc.)
-
-## Contributing
-
-See `TECHNICAL_SPEC.md` for detailed architecture.
+The current state of the app — what's shipped, what's deployed, what's planned — lives in [AUDIT_2026-05-18.md](AUDIT_2026-05-18.md). Architectural reference (data model, scoring, design rationale) is in [TECHNICAL_SPEC.md](TECHNICAL_SPEC.md). Historical session prompts (S1–S5) are archived under [docs/archive/](docs/archive/).
 
 ## License
 
 MIT
-
-## Support
-
-- **Technical Questions**: See `TECHNICAL_SPEC.md`
-- **Session Prompts**: See `CLAUDE_CODE_GUIDE.md`
-- **Issues**: Check component TODO comments
-
----
-
-**Built for specialty coffee enthusiasts. By specialty coffee enthusiasts.**
