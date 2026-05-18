@@ -23,6 +23,7 @@ export default async function handler(req, res) {
 
   const webhook = process.env.ANALYTICS_WEBHOOK_URL;
   if (!webhook) {
+    console.warn('ANALYTICS_WEBHOOK_URL unset — events not forwarded');
     return res.status(204).end();
   }
 

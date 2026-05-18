@@ -1,3 +1,5 @@
+<!-- TODO: confirm Vercel GitHub auto-deploy is wired and rewrite this doc accordingly -->
+
 # DrinkAble — Deployment Guide
 
 This guide walks you from zero to a production deployment of DrinkAble on Vercel.
