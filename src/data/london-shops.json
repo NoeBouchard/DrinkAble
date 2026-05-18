@@ -8,9 +8,20 @@
     "lng": -0.1019,
     "googleRating": 4.7,
     "scaScore": 91,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex", "siphon"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex",
+      "siphon"
+    ],
     "roaster": "House roasted with guest rotations",
-    "vibes": ["minimalist", "bright", "laptop-friendly", "industrial"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "laptop-friendly",
+      "industrial"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-18:00",
@@ -25,7 +36,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Single-origin pour-over specialists. World Latte Art Champion on staff.",
     "description": "Award-winning Clerkenwell institution that pioneered London's third-wave movement. Expect queues during peak hours.",
-    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": true,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "https://www.prufrocktraining.com/pages/our-barista-training-centre — Authorised SCA Trainers with 15+ years specialty coffee experience"
+    }
   },
   {
     "id": "monmouth-coffee-borough",
@@ -36,9 +55,19 @@
     "lng": -0.0904,
     "googleRating": 4.6,
     "scaScore": 89,
-    "brewMethods": ["espresso", "pour-over", "v60", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "pour-over",
+      "v60",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["cozy", "social", "vintage", "bright"],
+    "vibes": [
+      "cozy",
+      "social",
+      "vintage",
+      "bright"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -53,7 +82,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Direct trade coffee with rotating single-origins and seasonal specials.",
     "description": "Historic Borough Market location. Monmouth's original branch maintains artisanal integrity with minimal tech.",
-    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.monmouthcoffee.co.uk/news/july-2023-spa-terminus — own roastery at Spa Terminus, Bermondsey, with two Loring roasters",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "monmouth-coffee-covent-garden",
@@ -64,9 +101,18 @@
     "lng": -0.1239,
     "googleRating": 4.5,
     "scaScore": 87,
-    "brewMethods": ["espresso", "pour-over", "v60", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "pour-over",
+      "v60",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["cozy", "social", "vintage"],
+    "vibes": [
+      "cozy",
+      "social",
+      "vintage"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-18:00",
@@ -81,7 +127,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Monmouth's second location maintains roastery principles in tourist-friendly Covent Garden.",
     "description": "Covent Garden outpost of London's legendary specialty roastery. Compact space, high turnover.",
-    "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.monmouthcoffee.co.uk/news/july-2023-spa-terminus — own roastery at Spa Terminus, Bermondsey, with two Loring roasters",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "ozone-coffee-roasters",
@@ -92,9 +146,19 @@
     "lng": -0.0785,
     "googleRating": 4.6,
     "scaScore": 92,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["industrial", "bright", "laptop-friendly"],
+    "vibes": [
+      "industrial",
+      "bright",
+      "laptop-friendly"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:30",
@@ -109,7 +173,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Award-winning roastery with cutting-edge roasting techniques and international competition experience.",
     "description": "Leonard Street flagship. Exceptional pour-overs and espresso. Spacious, natural light, reliable WiFi.",
-    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://ozonecoffee.co.uk/ — Roasted every day of the working week at our Stafford roastery in the UK",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "caravan-coffee-bankside",
@@ -120,9 +192,18 @@
     "lng": -0.1046,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "aeropress", "v60", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "aeropress",
+      "v60",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "laptop-friendly", "social"],
+    "vibes": [
+      "bright",
+      "laptop-friendly",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:30",
@@ -137,7 +218,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Thoughtfully sourced single-origins with a focus on East African roasts.",
     "description": "Exmouth Market cafe with excellent espresso and good pastries. Part of the growing Caravan group.",
-    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://caravanandco.com/ — Caravan Coffee Roasters, Roastery Tours, coffee that is roasted down the road",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "caravan-coffee-kings-cross",
@@ -148,9 +237,18 @@
     "lng": -0.1257,
     "googleRating": 4.3,
     "scaScore": 82,
-    "brewMethods": ["espresso", "aeropress", "v60", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "aeropress",
+      "v60",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "laptop-friendly", "industrial"],
+    "vibes": [
+      "bright",
+      "laptop-friendly",
+      "industrial"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:30",
@@ -165,7 +263,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Caravan's King's Cross location in Granary Square. Large seating, good for meetings.",
     "description": "Spacious Granary Square cafe in the regenerated King's Cross district. Great for working.",
-    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://caravanandco.com/ — Caravan Restaurants & Coffee Roasters, Roastery Tours, serves Caravan-roasted coffee",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "origin-coffee-shoreditch",
@@ -176,9 +282,18 @@
     "lng": -0.0730,
     "googleRating": 4.5,
     "scaScore": 86,
-    "brewMethods": ["espresso", "v60", "aeropress", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "industrial"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "industrial"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:00",
@@ -193,7 +308,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Direct trade roastery with transparency in sourcing. Excellent single-origin program.",
     "description": "No-frills Great Eastern Street location. Known for quality single-origins and transparency.",
-    "imageUrl": "https://images.unsplash.com/photo-1529148482759-b953960d23b5?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1529148482759-b953960d23b5?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": true,
+    "signalSources": {
+      "roastsOwnBeans": "https://origincoffee.co.uk — own roastery at Porthleven (heartbeat of operations, QC and training rooms)",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "https://origincoffee.co.uk — delivers full SCA Coffee Diploma program (Barista, Brewing, Sensory), which per SCA program rules requires AST-credentialed trainers on staff"
+    }
   },
   {
     "id": "climpson-sons",
@@ -204,9 +327,20 @@
     "lng": -0.0620,
     "googleRating": 4.6,
     "scaScore": 88,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex", "siphon"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex",
+      "siphon"
+    ],
     "roaster": "House roasted",
-    "vibes": ["cozy", "bright", "social", "vintage"],
+    "vibes": [
+      "cozy",
+      "bright",
+      "social",
+      "vintage"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "closed",
@@ -221,7 +355,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "East London institution on Broadway Market. Excellent pour-overs and knowledgeable staff.",
     "description": "Beloved Hackney destination with cozy interior and vibrant market setting. Great espresso.",
-    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a36c86d?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a36c86d?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.climpsonandsons.com/pages/about — roasted down the road at their London Fields coffee roastery",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "dark-arts-coffee",
@@ -232,9 +374,18 @@
     "lng": -0.0456,
     "googleRating": 4.4,
     "scaScore": 83,
-    "brewMethods": ["espresso", "v60", "aeropress", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "quiet"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "quiet"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "08:00-17:00",
@@ -249,7 +400,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Up-and-coming roastery in Homerton with focus on natural and washed process coffees.",
     "description": "Emerging specialty roastery focusing on quality and experimentation. Good value, expert staff.",
-    "imageUrl": "https://images.unsplash.com/photo-1447933601403-0c6688bcf566?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1447933601403-0c6688bcf566?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://darkartscoffee.co.uk — UK Speciality Roasted Coffee Online & Wholesale; Homerton roastery confirmed by Hackney Gazette trade press",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "workshop-coffee-clerkenwell",
@@ -260,9 +419,18 @@
     "lng": -0.1041,
     "googleRating": 4.5,
     "scaScore": 85,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["minimalist", "bright", "laptop-friendly"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "laptop-friendly"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:00",
@@ -277,7 +445,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Rotating guest roasters. Strong emphasis on barista technique and education.",
     "description": "Exmouth Market showpiece featuring rotating guest roasters. Excellent training ground.",
-    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.workshopcoffee.com/pages/our-story — local roasting warehouse where we apply our meticulous methods and craft the beans",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "workshop-coffee-marylebone",
@@ -288,9 +464,16 @@
     "lng": -0.1469,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["bright", "laptop-friendly"],
+    "vibes": [
+      "bright",
+      "laptop-friendly"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:00",
@@ -305,7 +488,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Marylebone outlet featuring guest roasters with focus on education.",
     "description": "Paddington Street cafe in affluent Marylebone. Clean, well-trained staff, guest roasters.",
-    "imageUrl": "https://images.unsplash.com/photo-1511537190424-f06a10ca3f82?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1511537190424-f06a10ca3f82?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://workshopcoffee.com/blogs/journal/79162433-hello-from-bethnal-green — Workshop operates its own Bethnal Green roastery; Marylebone branch serves Workshop-roasted coffee",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "rosslyn-coffee",
@@ -316,9 +507,16 @@
     "lng": -0.0881,
     "googleRating": 4.3,
     "scaScore": 80,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["minimalist", "bright"],
+    "vibes": [
+      "minimalist",
+      "bright"
+    ],
     "priceRange": "$$$",
     "hours": {
       "mon": "07:00-17:00",
@@ -333,7 +531,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "City business cafe with guest roasters. Premium location, premium pricing.",
     "description": "Royal Exchange location catering to City professionals. Quality coffee, expensive area premium.",
-    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "kaffeine",
@@ -344,9 +550,18 @@
     "lng": -0.1331,
     "googleRating": 4.5,
     "scaScore": 85,
-    "brewMethods": ["espresso", "v60", "aeropress", "siphon"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "siphon"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["bright", "laptop-friendly", "social"],
+    "vibes": [
+      "bright",
+      "laptop-friendly",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:30",
@@ -361,7 +576,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Focus on alternative brewing methods and barista skill. Regular latte art competitions.",
     "description": "Fitzrovia location known for alternative brewing and knowledgeable baristas.",
-    "imageUrl": "https://images.unsplash.com/photo-1524432287450-2b8b3bdf9d8a?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1524432287450-2b8b3bdf9d8a?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "tap-coffee-tottenham",
@@ -372,9 +595,17 @@
     "lng": -0.1352,
     "googleRating": 4.4,
     "scaScore": 83,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright"],
+    "vibes": [
+      "minimalist",
+      "bright"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-18:00",
@@ -389,7 +620,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Specialty roastery with emphasis on education and technique. Strong espresso program.",
     "description": "Tottenham Court Road location. Well-trained staff, consistent quality, good for commuters.",
-    "imageUrl": "https://images.unsplash.com/photo-1445248033121-6f1ee305ce37?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1445248033121-6f1ee305ce37?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "Brian-coffee-spot.com primary-source review — TAP roasts in a Probat at the back of No 193 Wardour Street; Tottenham Court Road branch is the same company",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "tap-coffee-wardour",
@@ -400,9 +639,18 @@
     "lng": -0.1317,
     "googleRating": 4.4,
     "scaScore": 83,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "social"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-19:00",
@@ -417,7 +665,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "TAP's flagship Soho location. Consistently excellent espresso and training focus.",
     "description": "Wardour Street Soho cafe. Tourist-friendly location with reliable quality.",
-    "imageUrl": "https://images.unsplash.com/photo-1505252585461-04db1267ae5b?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1505252585461-04db1267ae5b?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "Brian-coffee-spot.com primary-source review — TAP roasts in a Probat at the back of No 193 Wardour Street; Tottenham Court Road branch is the same company",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "allpress-espresso-shoreditch",
@@ -428,9 +684,18 @@
     "lng": -0.0766,
     "googleRating": 4.5,
     "scaScore": 86,
-    "brewMethods": ["espresso", "batch-brew", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "batch-brew",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["industrial", "bright", "social"],
+    "vibes": [
+      "industrial",
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -445,7 +710,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "New Zealand roaster with global presence. Known for consistent quality and batch brew.",
     "description": "Allpress London outpost on Redchurch Street. Industrial space, excellent batch brew program.",
-    "imageUrl": "https://images.unsplash.com/photo-1456731190519-c46ec265d85d?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1456731190519-c46ec265d85d?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.allpressespresso.com/find/allpress-london-roastery-and-cafe — own Hot Air Roaster (A.R.T. III) at the London roastery; designed in NZ, shipped to London",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "square-mile-coffee",
@@ -456,9 +729,18 @@
     "lng": -0.0713,
     "googleRating": 4.4,
     "scaScore": 87,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "laptop-friendly", "industrial"],
+    "vibes": [
+      "bright",
+      "laptop-friendly",
+      "industrial"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -473,7 +755,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Award-winning roastery known for single-origins and espresso excellence.",
     "description": "Square Mile's roastery cafe at Hackney Picturehouse. Quality-focused, great for pour-overs.",
-    "imageUrl": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://shop.squaremilecoffee.com/pages/about-us — own roastery operating Probat G75 (espresso) and Probat UG15 (filter)",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "notes-coffee-trafalgar",
@@ -484,9 +774,16 @@
     "lng": -0.1258,
     "googleRating": 4.3,
     "scaScore": 81,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["bright", "social"],
+    "vibes": [
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-18:00",
@@ -501,7 +798,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Central London location with rotating guest roasters. Tourist-friendly.",
     "description": "Trafalgar Square area cafe with guest roasters. Good for visitors.",
-    "imageUrl": "https://images.unsplash.com/photo-1512568400610-62da47cb6d1d?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1512568400610-62da47cb6d1d?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://notescoffee.com/ — lovingly roasted in East London (Notes Coffee Roasters, in-house)",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "notes-coffee-kings-cross",
@@ -512,9 +817,16 @@
     "lng": -0.1407,
     "googleRating": 4.2,
     "scaScore": 80,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["bright", "social"],
+    "vibes": [
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -529,7 +841,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "The Stables location with guest roasters. Casual atmosphere.",
     "description": "King's Cross area location in The Stables. Outdoor seating available.",
-    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://notescoffee.com/ — lovingly roasted in East London (Notes Coffee Roasters, in-house)",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "nude-espresso-brick-lane",
@@ -540,9 +860,18 @@
     "lng": -0.0701,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "aeropress", "siphon"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "siphon"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "hipster"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "hipster"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -557,7 +886,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Brick Lane roastery known for excellent espresso and alternative methods.",
     "description": "Brick Lane flagship location. Minimalist decor, serious coffee, busy atmosphere.",
-    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.nudeespresso.com/about — own state-of-the-art coffee roastery opened 2014 at 25 Hanbury Street",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "nude-espresso-soho",
@@ -568,9 +905,16 @@
     "lng": -0.1294,
     "googleRating": 4.3,
     "scaScore": 82,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright"],
+    "vibes": [
+      "minimalist",
+      "bright"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-18:00",
@@ -585,7 +929,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Soho outlet of Nude Espresso. Excellent quality despite busy location.",
     "description": "Soho Square location. High turnover, consistent quality espresso.",
-    "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.nudeespresso.com/ — both roaster (HQ off Brick Lane) and cafe; Nude Coffee Roasters opened roastery in 2014",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "association-coffee",
@@ -596,9 +948,18 @@
     "lng": -0.0823,
     "googleRating": 4.4,
     "scaScore": 85,
-    "brewMethods": ["espresso", "v60", "aeropress", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "industrial"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "industrial"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-17:00",
@@ -613,7 +974,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Specialist roastery in City location. Known for single-origins and education.",
     "description": "Sun Street City cafe. Serious coffee, professional atmosphere, weekdays only.",
-    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "catalyst-coffee-balham",
@@ -624,9 +993,18 @@
     "lng": -0.1606,
     "googleRating": 4.4,
     "scaScore": 83,
-    "brewMethods": ["espresso", "v60", "aeropress", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "batch-brew"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["bright", "social", "laptop-friendly"],
+    "vibes": [
+      "bright",
+      "social",
+      "laptop-friendly"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "07:30-17:30",
@@ -641,7 +1019,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "South London gem with guest roasters. Local, friendly, good value.",
     "description": "Balham High Road cafe supporting guest roasters. Community-focused, affordable.",
-    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.londoncoffeeguide.com/Venues/Profile/Catalyst-(1) — they serve their own in-house roast for espresso and filter (V60, batch brew)",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "carbon-kopi-marylebone",
@@ -652,9 +1038,18 @@
     "lng": -0.1499,
     "googleRating": 4.3,
     "scaScore": 81,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "minimalist", "quiet"],
+    "vibes": [
+      "bright",
+      "minimalist",
+      "quiet"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -669,7 +1064,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Southeast Asian-influenced specialty roaster. Washed and natural process focus.",
     "description": "Marylebone specialty roaster with Asian heritage. Unique flavor profiles.",
-    "imageUrl": "https://images.unsplash.com/photo-1559522714-c4e7b9b0d4a5?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1559522714-c4e7b9b0d4a5?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "curators-coffee-bloomsbury",
@@ -680,9 +1083,16 @@
     "lng": -0.1307,
     "googleRating": 4.2,
     "scaScore": 80,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "Guest roasters",
-    "vibes": ["bright", "social"],
+    "vibes": [
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-18:00",
@@ -697,7 +1107,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Curated rotation of guest roasters in Soho/Bloomsbury area.",
     "description": "Guest roaster platform with daily rotating beans. Educational approach.",
-    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "watchhouse-bermondsey",
@@ -708,9 +1126,18 @@
     "lng": -0.0775,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "aeropress", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "industrial", "social"],
+    "vibes": [
+      "bright",
+      "industrial",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -725,7 +1152,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Roastery on Bermondsey Street with focus on Ethiopian and East African origins.",
     "description": "Bermondsey Street roastery cafe. Industrial interior, great for meetings.",
-    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://watchhouse.com/en-us/blogs/spotlight/new-roastery — built their own coffee roastery (Maltby Street) to push forward their vision of exceptional coffee",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "watchhouse-fetter-lane",
@@ -736,9 +1171,16 @@
     "lng": -0.1087,
     "googleRating": 4.2,
     "scaScore": 80,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright"],
+    "vibes": [
+      "minimalist",
+      "bright"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-17:00",
@@ -753,7 +1195,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "City location of WatchHouse. Professional atmosphere for business.",
     "description": "Fetter Lane City cafe. Weekdays only, professional crowd.",
-    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://watchhouse.com/en-us/blogs/spotlight/new-roastery — built their own coffee roastery (Maltby Street) to push forward their vision of exceptional coffee",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "kiss-the-hippo-richmond",
@@ -764,9 +1214,18 @@
     "lng": -0.3033,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex"
+    ],
     "roaster": "House roasted",
-    "vibes": ["cozy", "bright", "garden"],
+    "vibes": [
+      "cozy",
+      "bright",
+      "garden"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:30",
@@ -781,7 +1240,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Richmond riverside location with garden seating. Quality single-origins.",
     "description": "Richmond gem with beautiful courtyard. Worth the trip for great coffee and setting.",
-    "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": true,
+    "signalSources": {
+      "roastsOwnBeans": "https://kissthehippo.com — we roast organic, planet-friendly coffee at our roastery in London",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "https://kissthehippo.com/blogs/news/home-of-the-uk-barista-champions — Paul Ross won UK Barista Championship 2020, third consecutive year; Joshua Tarlo (Head of Coffee) is a former UKBC champion"
+    }
   },
   {
     "id": "kiss-the-hippo-fitzrovia",
@@ -792,9 +1259,16 @@
     "lng": -0.1399,
     "googleRating": 4.3,
     "scaScore": 82,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "minimalist"],
+    "vibes": [
+      "bright",
+      "minimalist"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:30",
@@ -809,7 +1283,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Fitzrovia location with consistent quality and friendly service.",
     "description": "Mortimer Street cafe. Central location, reliable quality.",
-    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": true,
+    "signalSources": {
+      "roastsOwnBeans": "https://kissthehippo.com — we roast organic, planet-friendly coffee at our roastery in London",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "https://kissthehippo.com/blogs/news/home-of-the-uk-barista-champions — Paul Ross won UK Barista Championship 2020, third consecutive year; Joshua Tarlo (Head of Coffee) is a former UKBC champion"
+    }
   },
   {
     "id": "grind-shoreditch",
@@ -820,9 +1302,17 @@
     "lng": -0.0803,
     "googleRating": 4.3,
     "scaScore": 79,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "social", "hipster"],
+    "vibes": [
+      "bright",
+      "social",
+      "hipster"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-17:00",
@@ -837,7 +1327,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Grind's flagship Shoreditch location. Good coffee with strong food program.",
     "description": "Coffee Street Shoreditch. Social cafe with strong food offerings.",
-    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://grind.co.uk/pages/about-us — set up their own roastery in London 2016; roastery team has grown to 20+ people, hundreds of tonnes per year",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "grind-soho",
@@ -848,9 +1346,15 @@
     "lng": -0.1329,
     "googleRating": 4.2,
     "scaScore": 78,
-    "brewMethods": ["espresso", "v60"],
+    "brewMethods": [
+      "espresso",
+      "v60"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "social"],
+    "vibes": [
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-19:00",
@@ -865,7 +1369,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Soho Grind with food focus. Less specialty than coffee, but reliable quality.",
     "description": "Great Pulteney Street Soho location. Breakfast-focused, good for tourists.",
-    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://grind.co.uk/pages/about-us — set up their own roastery in London 2016; roastery team has grown to 20+ people, hundreds of tonnes per year",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "gentlemen-baristas",
@@ -876,9 +1388,18 @@
     "lng": -0.0885,
     "googleRating": 4.3,
     "scaScore": 82,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "social"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:00",
@@ -893,7 +1414,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Borough High Street roastery. Strong focus on single-origins and education.",
     "description": "Borough High Street location. Well-trained staff, good pour-over program.",
-    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.thegentlemenbaristas.com/pages/roastery — opened Maryland roastery in Stratford, East London",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "redemption-roasters",
@@ -904,9 +1433,18 @@
     "lng": -0.1292,
     "googleRating": 4.4,
     "scaScore": 85,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex"
+    ],
     "roaster": "House roasted",
-    "vibes": ["industrial", "bright", "social"],
+    "vibes": [
+      "industrial",
+      "bright",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -921,7 +1459,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Industrial roastery space with focus on environmental responsibility.",
     "description": "Southgate Road roastery. Industrial vibe, ethical sourcing focus.",
-    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a36c86d?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a36c86d?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://redemptionroasters.com/pages/roastery — grew from first roastery inside HMYOI Aylesbury to commercial-scale roastery inside HMP The Mount, now at Wembley",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "blank-street-shoreditch",
@@ -932,9 +1478,16 @@
     "lng": -0.0684,
     "googleRating": 4.2,
     "scaScore": 79,
-    "brewMethods": ["espresso", "v60", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "social"],
+    "vibes": [
+      "bright",
+      "social"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "07:30-17:30",
@@ -949,7 +1502,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Growing specialty chain with good value. Espresso-focused.",
     "description": "Kingsland Road Shoreditch location. Good coffee, affordable, growing chain.",
-    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "black-sheep-city",
@@ -960,9 +1521,15 @@
     "lng": -0.1362,
     "googleRating": 4.1,
     "scaScore": 77,
-    "brewMethods": ["espresso", "v60"],
+    "brewMethods": [
+      "espresso",
+      "v60"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "minimalist"],
+    "vibes": [
+      "bright",
+      "minimalist"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:00-17:00",
@@ -977,7 +1544,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Black Sheep chain location in City. Business-focused, weekdays only.",
     "description": "Eastcastle Street City location. Professional atmosphere.",
-    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "pharmacie-coffee-dalston",
@@ -988,9 +1563,18 @@
     "lng": -0.0604,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "aeropress", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "batch-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["cozy", "bright", "hipster"],
+    "vibes": [
+      "cozy",
+      "bright",
+      "hipster"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -1005,7 +1589,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Dalston roastery with Nordic influence. Good batch brew and espresso.",
     "description": "Stoke Newington Road roastery. Cozy space, friendly staff, good value.",
-    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1521017387575-c3400ca199e7?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://pharmacie.coffee/ — Pharmacie Coffee Roasters Ltd, own roastery at Cliffe Industrial Estate, Lewes",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "saint-espresso",
@@ -1016,9 +1608,17 @@
     "lng": -0.0602,
     "googleRating": 4.3,
     "scaScore": 82,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "quiet"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "quiet"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "08:00-17:00",
@@ -1033,7 +1633,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "No-nonsense Hackney roastery. Quality espresso, affordable.",
     "description": "Stoke Newington location. Minimalist, focused on great espresso.",
-    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1495474472902-4d71bcdd2085?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://saintespresso.com — based in Hackney Wick, own roastery with attention to detail and sustainable sourcing",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "perky-blenders",
@@ -1044,9 +1652,18 @@
     "lng": -0.0659,
     "googleRating": 4.3,
     "scaScore": 81,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "social", "hipster"],
+    "vibes": [
+      "bright",
+      "social",
+      "hipster"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "08:00-17:00",
@@ -1061,7 +1678,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Hackney roastery with focus on blend quality. Affordable specialty.",
     "description": "Kingsland Road roastery. Good blends, affordable prices, community vibe.",
-    "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://perkyblenders.com — Perky Blenders Coffee Roasters LTD; roasts in East London",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "coleman-coffee",
@@ -1072,9 +1697,16 @@
     "lng": -0.0764,
     "googleRating": 4.2,
     "scaScore": 80,
-    "brewMethods": ["espresso", "v60", "aeropress"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright"],
+    "vibes": [
+      "minimalist",
+      "bright"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -1089,7 +1721,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Bermondsey specialty roaster with focus on African origins.",
     "description": "Bermondsey Street roastery. Quiet, focused, quality espresso.",
-    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://colemancoffee.com — independent specialty coffee roastery (originally Bermondsey, now Herefordshire)",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "assembly-coffee-brixton",
@@ -1100,9 +1740,18 @@
     "lng": -0.1194,
     "googleRating": 4.4,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "social", "community"],
+    "vibes": [
+      "bright",
+      "social",
+      "community"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:30",
@@ -1117,7 +1766,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Brixton community roastery with focus on diversity and inclusion.",
     "description": "Voltaire Road Brixton gem. Community-focused, excellent coffee, inclusive vibes.",
-    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": true,
+    "signalSources": {
+      "roastsOwnBeans": "https://assemblycoffee.co.uk — independent specialty coffee roaster founded 2015, based in Brixton",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "https://assemblycoffee.co.uk/pages/sca-training — hosts SCA Barista Skills, Brewing Skills and Sensory Skills certified courses (requires Authorised SCA Trainers per program rules)"
+    }
   },
   {
     "id": "hermanos-colombian",
@@ -1128,9 +1785,18 @@
     "lng": -0.0698,
     "googleRating": 4.3,
     "scaScore": 82,
-    "brewMethods": ["espresso", "v60", "aeropress", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["bright", "social", "cultural"],
+    "vibes": [
+      "bright",
+      "social",
+      "cultural"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "08:00-18:00",
@@ -1145,7 +1811,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Colombian specialty roaster. Direct trade relationships with farms.",
     "description": "Brick Lane Colombian roaster. Authentic sourcing, cultural identity, good value.",
-    "imageUrl": "https://images.unsplash.com/photo-1506755855726-66ec3c4d25a5?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1506755855726-66ec3c4d25a5?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://hermanoscoffeeroasters.com/ — Hermanos operates 10 London coffee shops with direct-trade, single-origin coffee roasted daily in the UK",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "terrone-shoreditch",
@@ -1156,9 +1830,19 @@
     "lng": -0.0715,
     "googleRating": 4.4,
     "scaScore": 85,
-    "brewMethods": ["espresso", "v60", "aeropress", "chemex", "pour-over"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "chemex",
+      "pour-over"
+    ],
     "roaster": "House roasted",
-    "vibes": ["minimalist", "bright", "industrial"],
+    "vibes": [
+      "minimalist",
+      "bright",
+      "industrial"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -1173,7 +1857,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Specialty roastery with focus on single-origin excellence and pour-over mastery.",
     "description": "Calvert Avenue Shoreditch. Excellent pour-overs, minimalist aesthetic, expert staff.",
-    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.terrone.co.uk/ — all coffee roasted on a Giesen W15 at their roastery, Unit 17 Millmead Road, N17",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "vagabond-highbury",
@@ -1184,9 +1876,18 @@
     "lng": -0.1065,
     "googleRating": 4.5,
     "scaScore": 86,
-    "brewMethods": ["espresso", "v60", "batch-brew", "cold-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "batch-brew",
+      "cold-brew"
+    ],
     "roaster": "Rotates guests",
-    "vibes": ["cozy", "laptop-friendly", "social"],
+    "vibes": [
+      "cozy",
+      "laptop-friendly",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "07:30-17:30",
@@ -1201,7 +1902,15 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Multi-roaster concept showcasing London's best roasteries on rotation.",
     "description": "North London multi-roaster cafe. Great coffee variety, relaxed atmosphere, popular with locals.",
-    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://vagabondcoffeeroasters.com/pages/about-us — specialty green beans from around the world roasted in London and served at their three London coffee shops",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "dark-arts-homerton",
@@ -1212,9 +1921,18 @@
     "lng": -0.0473,
     "googleRating": 4.6,
     "scaScore": 87,
-    "brewMethods": ["espresso", "v60", "aeropress", "cold-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "aeropress",
+      "cold-brew"
+    ],
     "roaster": "House roasted",
-    "vibes": ["industrial", "hipster", "social"],
+    "vibes": [
+      "industrial",
+      "hipster",
+      "social"
+    ],
     "priceRange": "$$",
     "hours": {
       "mon": "08:00-17:00",
@@ -1229,7 +1947,15 @@
     "hasOutdoorSeating": true,
     "specialtyFocus": "Dark roast specialists with a punk aesthetic. Known for bold, intense espresso blends.",
     "description": "Homerton's cult-favourite roaster. Dark, bold flavours in an edgy setting. Not for the faint-hearted.",
-    "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=500",
+    "roastsOwnBeans": true,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "https://www.darkartscoffee.co.uk/pages/locations — since moving to Rosina Street in 2020, the roastery has been home to their takeout espresso bar plus all roasting, QC and production",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   },
   {
     "id": "fields-beneath-kentish",
@@ -1240,9 +1966,17 @@
     "lng": -0.1427,
     "googleRating": 4.5,
     "scaScore": 84,
-    "brewMethods": ["espresso", "v60", "batch-brew"],
+    "brewMethods": [
+      "espresso",
+      "v60",
+      "batch-brew"
+    ],
     "roaster": "Rotates guests",
-    "vibes": ["cozy", "quiet", "vintage"],
+    "vibes": [
+      "cozy",
+      "quiet",
+      "vintage"
+    ],
     "priceRange": "$",
     "hours": {
       "mon": "07:00-17:00",
@@ -1257,6 +1991,14 @@
     "hasOutdoorSeating": false,
     "specialtyFocus": "Tiny cafe beneath Kentish Town West station. Seasonal single-origin focus.",
     "description": "Charming beneath-the-arches cafe at Kentish Town West. Beloved local gem with excellent value.",
-    "imageUrl": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500"
+    "imageUrl": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500",
+    "roastsOwnBeans": false,
+    "worldTop100": false,
+    "specialtyCertified": false,
+    "signalSources": {
+      "roastsOwnBeans": "unverified — no primary source found",
+      "worldTop100": "Not on the 2026 Worlds 100 Best Coffee Shops list (theworlds100bestcoffeeshops.com) — only 2 UK shops in the global top 100, both Scottish",
+      "specialtyCertified": "unverified — no primary source found"
+    }
   }
 ]
